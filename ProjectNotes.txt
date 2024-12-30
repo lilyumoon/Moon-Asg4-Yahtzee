@@ -1,0 +1,72 @@
+======= Lily Moon
+======= Assignment 4 - Yahtzee
+======= Advanced .NET
+======= Due 3/9/25
+
+
+From Blackboard:
+
+Week 1 (2 videos):
+
+https://northwoodtech.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=3dbba3de-c78e-4554-8a5f-b12300e7ff43 (90 minutes)
+
+	* How to play
+	* Examples of student assignments.
+	* Creating the Die class and the Hand class.
+	* How to use Dependency Injection so that the die class has images.
+	* How to test the dice.
+	* Note: Game should not have individual Die except in Form_Load method when creating Hand class.
+
+https://northwoodtech.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=234d877e-144f-4fc9-b587-b12301146de8 (39 minutes)
+
+	* How to use the Hand class
+	* How to build the score class
+	* How to test hand and score classes.
+
+Week 2 (1 video):
+
+https://northwoodtech.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1fc899d7-4355-4c65-85a7-b12a00e79a79 (76 minutes)
+
+	* Adding imageList to the Die class
+	* Adding Die as public properties to the Hand Class
+	* Writing the Score Class
+	* Simplifying the code by directly accessing Die in the hand class 
+		* example: 
+			  if (labelHold1.Text == "")
+			  {
+				hand.Die1.roll();
+				pictureBoxDie1.Image = hand.Die1.Image;
+			  }
+
+======= Blackboard contains tips on writing the scoring methods =======
+
+======= Basic premise of Yahtzee:
+
+	* rules: http://grail.sourceforge.net/demo/yahtzee/rules.html  
+	* how to play: https://www.youtube.com/watch?v=sQM7sN4NPz8
+	* tl;dr: 
+		* Goal: score high.
+		* Do while any scoring slots are empty:
+			* Roll 5 dice.
+				* Do twice: 
+					* Keep some number of those dice. 
+					* Re-roll the others. 
+			* Choose the round's scoring slot.
+
+======= Grading:
+	* Minimum classes required: 
+		* Die.cs
+		* Hand.cs
+		* Score.cs
+
+	* Other requirements:
+		* Basic game functionality.
+		* Rounds must be correctly scored.
+		* Game must show a running total of score.
+		* Must have methods to score the points of each scoring block (slot).
+
+======= Feedback Questions =======
+
+	* How much time did you spend on the project?
+
+	* What was the most difficult part of the project?
