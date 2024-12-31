@@ -25,6 +25,9 @@ namespace Moon_Asg4_Yahtzee
                 dice[i] = new Die(dieImages);
         }
 
+        /// <summary>
+        /// Re-rolls all dice and sets 'rolls left' to 2.
+        /// </summary>
         private void startNewRound()
         {
             for (int i = 0; i < dice.Length; i++)
@@ -35,27 +38,29 @@ namespace Moon_Asg4_Yahtzee
         /// <summary>
         /// Re-rolls any dice not marked as 'held'.
         /// </summary>
-        /// <param name="dieIndices">An array containing the indices of dice to replace</param>
-        public void rollDice(int[] dieIndices)
+        /// <param name="heldStates">An array of bools indicating which dice should be held. (true -> hold)</param>
+        public void rollDice(bool[] heldStates)
         {
-            if (0 != dieIndices.Length)
-                foreach (int i in dieIndices)
+            //Enumerable.Range(0, 5).ToList().ForEach(n => {
+            //    if (!heldStates[n]) dice[n].rollDie(); 
+            //});
+
+            for (int i = 0; i < heldStates.Length; i++)
+            {
+                bool shouldReroll = !heldStates[i];
+                if (shouldReroll)
                     dice[i].rollDie();
+            }
             rollsLeft--;
         }
-        
-        /// <summary>
-        /// Replaces the die at a specified position in dieList with a new die, given that there is already a die in that position.
-        /// </summary>
-        /// <param name="newDie">The new Card object to replace the old Card object with.</param>
-        public void rollDie(int dieIndex)
-        {
-            if (null != dice.ElementAtOrDefault(dieIndex))
-                dice[dieIndex].rollDie();
-        }
 
+        /// <summary>
+        /// Gets an int array representing the values currently displayed on the dice.
+        /// </summary>
+        /// <returns>An array representing the dice values.</returns>
         public int[] getDieValues()
         {
+            //var dieValues = Enumerable.Range(0, 5).Select(n => dice[n].Value).ToArray();
             int[] dieValues = new int[5];
             for (int i = 0; i < dieValues.Length; i++)
                 dieValues[i] = dice[i].Value;

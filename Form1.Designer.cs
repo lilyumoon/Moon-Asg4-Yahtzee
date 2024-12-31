@@ -107,6 +107,7 @@
             this.diePictureBox1.Size = new System.Drawing.Size(100, 100);
             this.diePictureBox1.TabIndex = 0;
             this.diePictureBox1.TabStop = false;
+            this.diePictureBox1.Click += new System.EventHandler(this.diePictureBox1_Click);
             // 
             // diePictureBox2
             // 
@@ -115,6 +116,7 @@
             this.diePictureBox2.Size = new System.Drawing.Size(100, 100);
             this.diePictureBox2.TabIndex = 1;
             this.diePictureBox2.TabStop = false;
+            this.diePictureBox2.Click += new System.EventHandler(this.diePictureBox2_Click);
             // 
             // diePictureBox3
             // 
@@ -123,6 +125,7 @@
             this.diePictureBox3.Size = new System.Drawing.Size(100, 100);
             this.diePictureBox3.TabIndex = 2;
             this.diePictureBox3.TabStop = false;
+            this.diePictureBox3.Click += new System.EventHandler(this.diePictureBox3_Click);
             // 
             // diePictureBox4
             // 
@@ -131,6 +134,7 @@
             this.diePictureBox4.Size = new System.Drawing.Size(100, 100);
             this.diePictureBox4.TabIndex = 3;
             this.diePictureBox4.TabStop = false;
+            this.diePictureBox4.Click += new System.EventHandler(this.diePictureBox4_Click);
             // 
             // diePictureBox5
             // 
@@ -139,6 +143,7 @@
             this.diePictureBox5.Size = new System.Drawing.Size(100, 100);
             this.diePictureBox5.TabIndex = 4;
             this.diePictureBox5.TabStop = false;
+            this.diePictureBox5.Click += new System.EventHandler(this.diePictureBox5_Click);
             // 
             // rollButton
             // 
@@ -148,6 +153,7 @@
             this.rollButton.TabIndex = 5;
             this.rollButton.Text = "Roll";
             this.rollButton.UseVisualStyleBackColor = true;
+            this.rollButton.Click += new System.EventHandler(this.rollButton_Click);
             // 
             // newGameButton
             // 
@@ -157,6 +163,7 @@
             this.newGameButton.TabIndex = 2;
             this.newGameButton.Text = "New Game";
             this.newGameButton.UseVisualStyleBackColor = true;
+            this.newGameButton.Click += new System.EventHandler(this.newGameButton_Click);
             // 
             // scoreBlockLeftLB
             // 
@@ -274,6 +281,7 @@
             this.Controls.Add(this.diceGroupBox);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.diceGroupBox.ResumeLayout(false);
             this.scoreGroupBox.ResumeLayout(false);
             this.scoreGroupBox.PerformLayout();

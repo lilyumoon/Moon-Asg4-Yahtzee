@@ -23,6 +23,9 @@ namespace Moon_Asg4_Yahtzee
             rollDie();
         }
 
+        /// <summary>
+        /// Simulates rolling the die. Also updates the associated image.
+        /// </summary>
         public void rollDie()
         {
             Random random = new Random(Guid.NewGuid().GetHashCode());
