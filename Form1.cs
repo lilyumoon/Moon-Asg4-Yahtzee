@@ -26,6 +26,12 @@ namespace Moon_Asg4_Yahtzee
             foreach (Label label in heldLabels)
                 label.Visible = false;
 
+            new ScoringItem(scoringListBox1, "Ones: ");
+            new ScoringItem(scoringListBox1, "Twos: ");
+            new ScoringItem(scoringListBox1, "Threes: ");
+            new ScoringItem(scoringListBox1, "Fours: ");
+            new ScoringItem(scoringListBox1, "Fives: ");
+            new ScoringItem(scoringListBox1, "Sixes: ");
         }
 
         private void Form1_Load(object sender, EventArgs e)

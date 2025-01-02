@@ -54,6 +54,8 @@
             this.scoringListBox2 = new System.Windows.Forms.ListBox();
             this.scoringListBox1 = new System.Windows.Forms.ListBox();
             this.newGameButton = new System.Windows.Forms.Button();
+            this.setButton1 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.diceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox4)).BeginInit();
@@ -190,6 +192,8 @@
             // 
             // scoreGroupBox
             // 
+            this.scoreGroupBox.Controls.Add(this.button1);
+            this.scoreGroupBox.Controls.Add(this.setButton1);
             this.scoreGroupBox.Controls.Add(this.gameTotalCounterLabel);
             this.scoreGroupBox.Controls.Add(this.lowerTotalCounterLabel);
             this.scoreGroupBox.Controls.Add(this.bonusCounterLabel);
@@ -283,7 +287,7 @@
             this.scoringListBox2.FormattingEnabled = true;
             this.scoringListBox2.Location = new System.Drawing.Point(354, 19);
             this.scoringListBox2.Name = "scoringListBox2";
-            this.scoringListBox2.Size = new System.Drawing.Size(300, 121);
+            this.scoringListBox2.Size = new System.Drawing.Size(240, 121);
             this.scoringListBox2.TabIndex = 1;
             // 
             // scoringListBox1
@@ -291,7 +295,7 @@
             this.scoringListBox1.FormattingEnabled = true;
             this.scoringListBox1.Location = new System.Drawing.Point(28, 19);
             this.scoringListBox1.Name = "scoringListBox1";
-            this.scoringListBox1.Size = new System.Drawing.Size(300, 121);
+            this.scoringListBox1.Size = new System.Drawing.Size(240, 121);
             this.scoringListBox1.TabIndex = 0;
             // 
             // newGameButton
@@ -303,6 +307,24 @@
             this.newGameButton.Text = "New Game";
             this.newGameButton.UseVisualStyleBackColor = true;
             this.newGameButton.Click += new System.EventHandler(this.newGameButton_Click);
+            // 
+            // setButton1
+            // 
+            this.setButton1.Location = new System.Drawing.Point(273, 78);
+            this.setButton1.Name = "setButton1";
+            this.setButton1.Size = new System.Drawing.Size(50, 20);
+            this.setButton1.TabIndex = 12;
+            this.setButton1.Text = "Set";
+            this.setButton1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(600, 78);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(50, 20);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Set";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -355,6 +377,8 @@
         private System.Windows.Forms.Label heldLabel4;
         private System.Windows.Forms.Label heldLabel3;
         private System.Windows.Forms.Label heldLabel2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button setButton1;
     }
 }
 
