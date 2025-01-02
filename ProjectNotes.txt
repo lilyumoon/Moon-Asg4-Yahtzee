@@ -65,6 +65,19 @@ https://northwoodtech.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1fc899d7-4
 		* Game must show a running total of score.
 		* Must have methods to score the points of each scoring block (slot).
 
+
+
+======= How to handle reset:
+	I'm opting to try the ListBox approach with the 2 set boxes as illustrated on Blackboard.
+		* On a reset, The text would need to be reverted.
+			* To do this, I'm going to try slicing the string at the colon and keeping the first half
+
+
+
+
+
+
+
 ======= Feedback Questions =======
 
 	* How much time did you spend on the project?

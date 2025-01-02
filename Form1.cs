@@ -25,13 +25,22 @@ namespace Moon_Asg4_Yahtzee
             heldLabels = new Label[] { heldLabel1,  heldLabel2, heldLabel3, heldLabel4, heldLabel5 };
             foreach (Label label in heldLabels)
                 label.Visible = false;
+        }
 
-            new ScoringItem(scoringListBox1, "Ones: ");
-            new ScoringItem(scoringListBox1, "Twos: ");
-            new ScoringItem(scoringListBox1, "Threes: ");
-            new ScoringItem(scoringListBox1, "Fours: ");
-            new ScoringItem(scoringListBox1, "Fives: ");
-            new ScoringItem(scoringListBox1, "Sixes: ");
+        private void resetGame()
+        {
+            // Iterate through each item in the scoring boxes, split the strings at the ':',
+            //   and set the item to be the first half of the split string
+            for (int i = 0; i < scoringListBox1.Items.Count; i++)
+            {
+                string resetText = scoringListBox1.Items[i].ToString().Split(':')[0];
+                scoringListBox1.Items[i] = resetText;
+            }
+            for (int i = 0; i < scoringListBox2.Items.Count; i++)
+            {
+                string resetText = scoringListBox2.Items[i].ToString().Split(':')[0];
+                scoringListBox2.Items[i] = resetText;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,7 +50,7 @@ namespace Moon_Asg4_Yahtzee
 
         private void newGameButton_Click(object sender, EventArgs e)
         {
-
+            resetGame();
         }
 
         private void rollButton_Click(object sender, EventArgs e)
@@ -64,6 +73,74 @@ namespace Moon_Asg4_Yahtzee
             heldLabels[dieIndex].Visible = !heldLabels[dieIndex].Visible;
         }
 
+        private void setButton1_Click(object sender, EventArgs e)
+        {
+            if (0 == scoringListBox1.SelectedIndex)
+            {
 
+            }
+            else if (1 == scoringListBox1.SelectedIndex)
+            {
+
+            }
+            else if (2 == scoringListBox1.SelectedIndex)
+            {
+
+            }
+            else if (3 == scoringListBox1.SelectedIndex)
+            {
+
+            }
+            else if (4 == scoringListBox1.SelectedIndex)
+            {
+
+            }
+            else if (5 == scoringListBox1.SelectedIndex)
+            {
+
+            }
+            else 
+                throw new ArgumentOutOfRangeException(
+                    nameof(scoringListBox1.SelectedIndex),
+                    scoringListBox1.SelectedIndex,
+                    "SelectedIndex of scoringListBox1 is outside the range of valid values (0-5)");
+        }
+
+        private void setButton2_Click(object sender, EventArgs e)
+        {
+            if (0 == scoringListBox2.SelectedIndex)
+            {
+
+            }
+            else if (1 == scoringListBox2.SelectedIndex)
+            {
+
+            }
+            else if (2 == scoringListBox2.SelectedIndex)
+            {
+
+            }
+            else if (3 == scoringListBox2.SelectedIndex)
+            {
+
+            }
+            else if (4 == scoringListBox2.SelectedIndex)
+            {
+
+            }
+            else if (5 == scoringListBox2.SelectedIndex)
+            {
+
+            }
+            else if (6 == scoringListBox2.SelectedIndex)
+            {
+
+            }
+            else
+                throw new ArgumentOutOfRangeException(
+                    nameof(scoringListBox2.SelectedIndex),
+                    scoringListBox2.SelectedIndex,
+                    "SelectedIndex of scoringListBox2 is outside the range of valid values (0-6)");
+        }
     }
 }

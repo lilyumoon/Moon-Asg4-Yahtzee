@@ -55,7 +55,7 @@
             this.scoringListBox1 = new System.Windows.Forms.ListBox();
             this.newGameButton = new System.Windows.Forms.Button();
             this.setButton1 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.setButton2 = new System.Windows.Forms.Button();
             this.diceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox4)).BeginInit();
@@ -192,7 +192,7 @@
             // 
             // scoreGroupBox
             // 
-            this.scoreGroupBox.Controls.Add(this.button1);
+            this.scoreGroupBox.Controls.Add(this.setButton2);
             this.scoreGroupBox.Controls.Add(this.setButton1);
             this.scoreGroupBox.Controls.Add(this.gameTotalCounterLabel);
             this.scoreGroupBox.Controls.Add(this.lowerTotalCounterLabel);
@@ -284,18 +284,37 @@
             // 
             // scoringListBox2
             // 
+            this.scoringListBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.scoringListBox2.FormattingEnabled = true;
+            this.scoringListBox2.ItemHeight = 15;
+            this.scoringListBox2.Items.AddRange(new object[] {
+            "Three of a Kind: ",
+            "Four of a Kind: ",
+            "Full House: ",
+            "Small Straight: ",
+            "Large Straight: ",
+            "Yahtzee: ",
+            "Chance: "});
             this.scoringListBox2.Location = new System.Drawing.Point(354, 19);
             this.scoringListBox2.Name = "scoringListBox2";
-            this.scoringListBox2.Size = new System.Drawing.Size(240, 121);
+            this.scoringListBox2.Size = new System.Drawing.Size(240, 109);
             this.scoringListBox2.TabIndex = 1;
             // 
             // scoringListBox1
             // 
+            this.scoringListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.scoringListBox1.FormattingEnabled = true;
+            this.scoringListBox1.ItemHeight = 15;
+            this.scoringListBox1.Items.AddRange(new object[] {
+            "Ones: ",
+            "Twos: ",
+            "Threes: ",
+            "Fours: ",
+            "Fives: ",
+            "Sixes: "});
             this.scoringListBox1.Location = new System.Drawing.Point(28, 19);
             this.scoringListBox1.Name = "scoringListBox1";
-            this.scoringListBox1.Size = new System.Drawing.Size(240, 121);
+            this.scoringListBox1.Size = new System.Drawing.Size(240, 109);
             this.scoringListBox1.TabIndex = 0;
             // 
             // newGameButton
@@ -316,15 +335,17 @@
             this.setButton1.TabIndex = 12;
             this.setButton1.Text = "Set";
             this.setButton1.UseVisualStyleBackColor = true;
+            this.setButton1.Click += new System.EventHandler(this.setButton1_Click);
             // 
-            // button1
+            // setButton2
             // 
-            this.button1.Location = new System.Drawing.Point(600, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 20);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Set";
-            this.button1.UseVisualStyleBackColor = true;
+            this.setButton2.Location = new System.Drawing.Point(600, 78);
+            this.setButton2.Name = "setButton2";
+            this.setButton2.Size = new System.Drawing.Size(50, 20);
+            this.setButton2.TabIndex = 13;
+            this.setButton2.Text = "Set";
+            this.setButton2.UseVisualStyleBackColor = true;
+            this.setButton2.Click += new System.EventHandler(this.setButton2_Click);
             // 
             // Form1
             // 
@@ -377,8 +398,8 @@
         private System.Windows.Forms.Label heldLabel4;
         private System.Windows.Forms.Label heldLabel3;
         private System.Windows.Forms.Label heldLabel2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button setButton1;
+        private System.Windows.Forms.Button setButton2;
     }
 }
 
