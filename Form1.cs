@@ -22,6 +22,7 @@ namespace Moon_Asg4_Yahtzee
 
         private void setup()
         {
+            heldLabels = new Label[] { heldLabel1,  heldLabel2, heldLabel3, heldLabel4, heldLabel5 };
             foreach (Label label in heldLabels)
                 label.Visible = false;
 

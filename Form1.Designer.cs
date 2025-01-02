@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.imageListDice = new System.Windows.Forms.ImageList(this.components);
             this.diceGroupBox = new System.Windows.Forms.GroupBox();
+            this.heldLabel5 = new System.Windows.Forms.Label();
+            this.heldLabel4 = new System.Windows.Forms.Label();
+            this.heldLabel3 = new System.Windows.Forms.Label();
+            this.heldLabel2 = new System.Windows.Forms.Label();
+            this.heldLabel1 = new System.Windows.Forms.Label();
             this.rollButton = new System.Windows.Forms.Button();
             this.diePictureBox5 = new System.Windows.Forms.PictureBox();
             this.diePictureBox4 = new System.Windows.Forms.PictureBox();
@@ -46,16 +51,9 @@
             this.lowerTotalLabel = new System.Windows.Forms.Label();
             this.bonusLabel = new System.Windows.Forms.Label();
             this.upperTotalLabel = new System.Windows.Forms.Label();
-            this.setButton2 = new System.Windows.Forms.Button();
-            this.setButton1 = new System.Windows.Forms.Button();
-            this.scoreBlockRightLB = new System.Windows.Forms.ListBox();
-            this.scoreBlockLeftLB = new System.Windows.Forms.ListBox();
+            this.scoringListBox2 = new System.Windows.Forms.ListBox();
+            this.scoringListBox1 = new System.Windows.Forms.ListBox();
             this.newGameButton = new System.Windows.Forms.Button();
-            this.heldLabel1 = new System.Windows.Forms.Label();
-            this.heldLabel2 = new System.Windows.Forms.Label();
-            this.heldLabel3 = new System.Windows.Forms.Label();
-            this.heldLabel4 = new System.Windows.Forms.Label();
-            this.heldLabel5 = new System.Windows.Forms.Label();
             this.diceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox4)).BeginInit();
@@ -89,6 +87,51 @@
             this.diceGroupBox.Size = new System.Drawing.Size(680, 200);
             this.diceGroupBox.TabIndex = 0;
             this.diceGroupBox.TabStop = false;
+            // 
+            // heldLabel5
+            // 
+            this.heldLabel5.AutoSize = true;
+            this.heldLabel5.Location = new System.Drawing.Point(557, 138);
+            this.heldLabel5.Name = "heldLabel5";
+            this.heldLabel5.Size = new System.Drawing.Size(66, 13);
+            this.heldLabel5.TabIndex = 10;
+            this.heldLabel5.Text = "*** HELD ***";
+            // 
+            // heldLabel4
+            // 
+            this.heldLabel4.AutoSize = true;
+            this.heldLabel4.Location = new System.Drawing.Point(432, 138);
+            this.heldLabel4.Name = "heldLabel4";
+            this.heldLabel4.Size = new System.Drawing.Size(66, 13);
+            this.heldLabel4.TabIndex = 9;
+            this.heldLabel4.Text = "*** HELD ***";
+            // 
+            // heldLabel3
+            // 
+            this.heldLabel3.AutoSize = true;
+            this.heldLabel3.Location = new System.Drawing.Point(308, 138);
+            this.heldLabel3.Name = "heldLabel3";
+            this.heldLabel3.Size = new System.Drawing.Size(66, 13);
+            this.heldLabel3.TabIndex = 8;
+            this.heldLabel3.Text = "*** HELD ***";
+            // 
+            // heldLabel2
+            // 
+            this.heldLabel2.AutoSize = true;
+            this.heldLabel2.Location = new System.Drawing.Point(185, 138);
+            this.heldLabel2.Name = "heldLabel2";
+            this.heldLabel2.Size = new System.Drawing.Size(66, 13);
+            this.heldLabel2.TabIndex = 7;
+            this.heldLabel2.Text = "*** HELD ***";
+            // 
+            // heldLabel1
+            // 
+            this.heldLabel1.AutoSize = true;
+            this.heldLabel1.Location = new System.Drawing.Point(50, 138);
+            this.heldLabel1.Name = "heldLabel1";
+            this.heldLabel1.Size = new System.Drawing.Size(66, 13);
+            this.heldLabel1.TabIndex = 6;
+            this.heldLabel1.Text = "*** HELD ***";
             // 
             // rollButton
             // 
@@ -155,10 +198,8 @@
             this.scoreGroupBox.Controls.Add(this.lowerTotalLabel);
             this.scoreGroupBox.Controls.Add(this.bonusLabel);
             this.scoreGroupBox.Controls.Add(this.upperTotalLabel);
-            this.scoreGroupBox.Controls.Add(this.setButton2);
-            this.scoreGroupBox.Controls.Add(this.setButton1);
-            this.scoreGroupBox.Controls.Add(this.scoreBlockRightLB);
-            this.scoreGroupBox.Controls.Add(this.scoreBlockLeftLB);
+            this.scoreGroupBox.Controls.Add(this.scoringListBox2);
+            this.scoreGroupBox.Controls.Add(this.scoringListBox1);
             this.scoreGroupBox.Location = new System.Drawing.Point(22, 228);
             this.scoreGroupBox.Name = "scoreGroupBox";
             this.scoreGroupBox.Size = new System.Drawing.Size(680, 200);
@@ -168,7 +209,7 @@
             // gameTotalCounterLabel
             // 
             this.gameTotalCounterLabel.AutoSize = true;
-            this.gameTotalCounterLabel.Location = new System.Drawing.Point(456, 171);
+            this.gameTotalCounterLabel.Location = new System.Drawing.Point(444, 171);
             this.gameTotalCounterLabel.Name = "gameTotalCounterLabel";
             this.gameTotalCounterLabel.Size = new System.Drawing.Size(13, 13);
             this.gameTotalCounterLabel.TabIndex = 11;
@@ -177,7 +218,7 @@
             // lowerTotalCounterLabel
             // 
             this.lowerTotalCounterLabel.AutoSize = true;
-            this.lowerTotalCounterLabel.Location = new System.Drawing.Point(456, 147);
+            this.lowerTotalCounterLabel.Location = new System.Drawing.Point(444, 147);
             this.lowerTotalCounterLabel.Name = "lowerTotalCounterLabel";
             this.lowerTotalCounterLabel.Size = new System.Drawing.Size(13, 13);
             this.lowerTotalCounterLabel.TabIndex = 10;
@@ -186,7 +227,7 @@
             // bonusCounterLabel
             // 
             this.bonusCounterLabel.AutoSize = true;
-            this.bonusCounterLabel.Location = new System.Drawing.Point(136, 171);
+            this.bonusCounterLabel.Location = new System.Drawing.Point(124, 171);
             this.bonusCounterLabel.Name = "bonusCounterLabel";
             this.bonusCounterLabel.Size = new System.Drawing.Size(13, 13);
             this.bonusCounterLabel.TabIndex = 9;
@@ -195,7 +236,7 @@
             // upperTotalCounterLabel
             // 
             this.upperTotalCounterLabel.AutoSize = true;
-            this.upperTotalCounterLabel.Location = new System.Drawing.Point(136, 147);
+            this.upperTotalCounterLabel.Location = new System.Drawing.Point(124, 147);
             this.upperTotalCounterLabel.Name = "upperTotalCounterLabel";
             this.upperTotalCounterLabel.Size = new System.Drawing.Size(13, 13);
             this.upperTotalCounterLabel.TabIndex = 8;
@@ -204,7 +245,7 @@
             // gameTotalLabel
             // 
             this.gameTotalLabel.AutoSize = true;
-            this.gameTotalLabel.Location = new System.Drawing.Point(363, 171);
+            this.gameTotalLabel.Location = new System.Drawing.Point(351, 171);
             this.gameTotalLabel.Name = "gameTotalLabel";
             this.gameTotalLabel.Size = new System.Drawing.Size(65, 13);
             this.gameTotalLabel.TabIndex = 7;
@@ -213,7 +254,7 @@
             // lowerTotalLabel
             // 
             this.lowerTotalLabel.AutoSize = true;
-            this.lowerTotalLabel.Location = new System.Drawing.Point(363, 147);
+            this.lowerTotalLabel.Location = new System.Drawing.Point(351, 147);
             this.lowerTotalLabel.Name = "lowerTotalLabel";
             this.lowerTotalLabel.Size = new System.Drawing.Size(66, 13);
             this.lowerTotalLabel.TabIndex = 6;
@@ -222,7 +263,7 @@
             // bonusLabel
             // 
             this.bonusLabel.AutoSize = true;
-            this.bonusLabel.Location = new System.Drawing.Point(40, 171);
+            this.bonusLabel.Location = new System.Drawing.Point(28, 171);
             this.bonusLabel.Name = "bonusLabel";
             this.bonusLabel.Size = new System.Drawing.Size(76, 13);
             this.bonusLabel.TabIndex = 5;
@@ -231,45 +272,27 @@
             // upperTotalLabel
             // 
             this.upperTotalLabel.AutoSize = true;
-            this.upperTotalLabel.Location = new System.Drawing.Point(40, 147);
+            this.upperTotalLabel.Location = new System.Drawing.Point(28, 147);
             this.upperTotalLabel.Name = "upperTotalLabel";
             this.upperTotalLabel.Size = new System.Drawing.Size(66, 13);
             this.upperTotalLabel.TabIndex = 4;
             this.upperTotalLabel.Text = "Upper Total:";
             // 
-            // setButton2
+            // scoringListBox2
             // 
-            this.setButton2.Location = new System.Drawing.Point(597, 71);
-            this.setButton2.Name = "setButton2";
-            this.setButton2.Size = new System.Drawing.Size(75, 23);
-            this.setButton2.TabIndex = 3;
-            this.setButton2.Text = "Set";
-            this.setButton2.UseVisualStyleBackColor = true;
+            this.scoringListBox2.FormattingEnabled = true;
+            this.scoringListBox2.Location = new System.Drawing.Point(354, 19);
+            this.scoringListBox2.Name = "scoringListBox2";
+            this.scoringListBox2.Size = new System.Drawing.Size(300, 121);
+            this.scoringListBox2.TabIndex = 1;
             // 
-            // setButton1
+            // scoringListBox1
             // 
-            this.setButton1.Location = new System.Drawing.Point(271, 71);
-            this.setButton1.Name = "setButton1";
-            this.setButton1.Size = new System.Drawing.Size(75, 23);
-            this.setButton1.TabIndex = 2;
-            this.setButton1.Text = "Set";
-            this.setButton1.UseVisualStyleBackColor = true;
-            // 
-            // scoreBlockRightLB
-            // 
-            this.scoreBlockRightLB.FormattingEnabled = true;
-            this.scoreBlockRightLB.Location = new System.Drawing.Point(366, 19);
-            this.scoreBlockRightLB.Name = "scoreBlockRightLB";
-            this.scoreBlockRightLB.Size = new System.Drawing.Size(225, 121);
-            this.scoreBlockRightLB.TabIndex = 1;
-            // 
-            // scoreBlockLeftLB
-            // 
-            this.scoreBlockLeftLB.FormattingEnabled = true;
-            this.scoreBlockLeftLB.Location = new System.Drawing.Point(40, 19);
-            this.scoreBlockLeftLB.Name = "scoreBlockLeftLB";
-            this.scoreBlockLeftLB.Size = new System.Drawing.Size(225, 121);
-            this.scoreBlockLeftLB.TabIndex = 0;
+            this.scoringListBox1.FormattingEnabled = true;
+            this.scoringListBox1.Location = new System.Drawing.Point(28, 19);
+            this.scoringListBox1.Name = "scoringListBox1";
+            this.scoringListBox1.Size = new System.Drawing.Size(300, 121);
+            this.scoringListBox1.TabIndex = 0;
             // 
             // newGameButton
             // 
@@ -280,51 +303,6 @@
             this.newGameButton.Text = "New Game";
             this.newGameButton.UseVisualStyleBackColor = true;
             this.newGameButton.Click += new System.EventHandler(this.newGameButton_Click);
-            // 
-            // heldLabel1
-            // 
-            this.heldLabel1.AutoSize = true;
-            this.heldLabel1.Location = new System.Drawing.Point(50, 138);
-            this.heldLabel1.Name = "heldLabel1";
-            this.heldLabel1.Size = new System.Drawing.Size(66, 13);
-            this.heldLabel1.TabIndex = 6;
-            this.heldLabel1.Text = "*** HELD ***";
-            // 
-            // heldLabel2
-            // 
-            this.heldLabel2.AutoSize = true;
-            this.heldLabel2.Location = new System.Drawing.Point(185, 138);
-            this.heldLabel2.Name = "heldLabel2";
-            this.heldLabel2.Size = new System.Drawing.Size(66, 13);
-            this.heldLabel2.TabIndex = 7;
-            this.heldLabel2.Text = "*** HELD ***";
-            // 
-            // heldLabel3
-            // 
-            this.heldLabel3.AutoSize = true;
-            this.heldLabel3.Location = new System.Drawing.Point(308, 138);
-            this.heldLabel3.Name = "heldLabel3";
-            this.heldLabel3.Size = new System.Drawing.Size(66, 13);
-            this.heldLabel3.TabIndex = 8;
-            this.heldLabel3.Text = "*** HELD ***";
-            // 
-            // heldLabel4
-            // 
-            this.heldLabel4.AutoSize = true;
-            this.heldLabel4.Location = new System.Drawing.Point(432, 138);
-            this.heldLabel4.Name = "heldLabel4";
-            this.heldLabel4.Size = new System.Drawing.Size(66, 13);
-            this.heldLabel4.TabIndex = 9;
-            this.heldLabel4.Text = "*** HELD ***";
-            // 
-            // heldLabel5
-            // 
-            this.heldLabel5.AutoSize = true;
-            this.heldLabel5.Location = new System.Drawing.Point(557, 138);
-            this.heldLabel5.Name = "heldLabel5";
-            this.heldLabel5.Size = new System.Drawing.Size(66, 13);
-            this.heldLabel5.TabIndex = 10;
-            this.heldLabel5.Text = "*** HELD ***";
             // 
             // Form1
             // 
@@ -362,10 +340,8 @@
         private System.Windows.Forms.PictureBox diePictureBox2;
         private System.Windows.Forms.PictureBox diePictureBox1;
         private System.Windows.Forms.Button newGameButton;
-        private System.Windows.Forms.ListBox scoreBlockLeftLB;
-        private System.Windows.Forms.Button setButton2;
-        private System.Windows.Forms.Button setButton1;
-        private System.Windows.Forms.ListBox scoreBlockRightLB;
+        private System.Windows.Forms.ListBox scoringListBox1;
+        private System.Windows.Forms.ListBox scoringListBox2;
         private System.Windows.Forms.Label gameTotalCounterLabel;
         private System.Windows.Forms.Label lowerTotalCounterLabel;
         private System.Windows.Forms.Label bonusCounterLabel;
