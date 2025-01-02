@@ -26,32 +26,27 @@ namespace Moon_Asg4_Yahtzee
         }
 
         /// <summary>
-        /// Re-rolls all dice and sets 'rolls left' to 2.
+        /// Rolls any dice not marked as 'held'.
         /// </summary>
-        private void startNewRound()
+        /// <param name="diceToRoll">A bool array indicating which dice to roll. (true -> roll)</param>
+        /// <param name="isNewRound">True if new round.</param>
+        public void rollDice(bool[] diceToRoll, bool isNewRound)
         {
-            for (int i = 0; i < dice.Length; i++)
-                dice[i].rollDie();
-            rollsLeft = 2;
-        }
+            // Iterate through the dice to roll, and roll the die at that index if it should be rolled
 
-        /// <summary>
-        /// Re-rolls any dice not marked as 'held'.
-        /// </summary>
-        /// <param name="heldStates">An array of bools indicating which dice should be held. (true -> hold)</param>
-        public void rollDice(bool[] heldStates)
-        {
             //Enumerable.Range(0, 5).ToList().ForEach(n => {
-            //    if (!heldStates[n]) dice[n].rollDie(); 
+            //    if (diceToRoll[n]) dice[n].rollDie(); 
             //});
 
-            for (int i = 0; i < heldStates.Length; i++)
+            for (int i = 0; i < diceToRoll.Length; i++)
             {
-                bool shouldReroll = !heldStates[i];
-                if (shouldReroll)
+                if (diceToRoll[i])
                     dice[i].rollDie();
             }
-            rollsLeft--;
+            if (isNewRound)
+                rollsLeft = 2;
+            else
+                rollsLeft -= 1;
         }
 
         /// <summary>

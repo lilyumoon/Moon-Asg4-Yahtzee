@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,8 @@ namespace Moon_Asg4_Yahtzee
     {
         private Label[] heldLabels = new Label[5];
 
+        private Hand hand;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,7 +25,12 @@ namespace Moon_Asg4_Yahtzee
 
         private void setup()
         {
-            heldLabels = new Label[] { heldLabel1,  heldLabel2, heldLabel3, heldLabel4, heldLabel5 };
+            heldLabels = new Label[] { heldLabel1, heldLabel2, heldLabel3, heldLabel4, heldLabel5 };
+            clearHeldDice();
+        }
+
+        private void clearHeldDice()
+        {
             foreach (Label label in heldLabels)
                 label.Visible = false;
         }
@@ -30,7 +38,7 @@ namespace Moon_Asg4_Yahtzee
         private void resetGame()
         {
             // Iterate through each item in the scoring boxes and save
-            // the portion before and including the ': '
+            // the portion before and including the ': '. Discaard the rest.
             for (int i = 0; i < scoringListBox1.Items.Count; i++)
             {
                 int splitIndex = scoringListBox1.Items[i].ToString().IndexOf(':');
@@ -44,14 +52,37 @@ namespace Moon_Asg4_Yahtzee
                 scoringListBox2.Items[i] = resetText;
             }
 
-            // Reset any 'held' labels
-            foreach (Label label in heldLabels)
-                label.Visible = false;
-
+            // Reset any 'held' labels and counters.
+            clearHeldDice();
             upperTotalCounterLabel.Text = "0";
             bonusCounterLabel.Text = "0";
             lowerTotalCounterLabel.Text = "0";
             gameTotalCounterLabel.Text = "0";
+        }
+
+        private void rollDice(bool isNewRound)
+        {
+            // Find which dice should be rolled.
+            bool[] diceToRoll = new bool[5];
+            for (int i = 0; i < heldLabels.Length; i++)
+            {
+                // If the die is not being held, it should be rolled
+                if (!heldLabels[i].Visible)
+                    diceToRoll[i] = true;
+            }
+            // Tell the hand to roll those dice.
+            hand.rollDice(diceToRoll, isNewRound);
+        }
+
+        private void updateDiceImages()
+        {
+
+        }
+
+        private void newRound()
+        {
+            clearHeldDice();
+            rollDice(true);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -66,7 +97,12 @@ namespace Moon_Asg4_Yahtzee
 
         private void rollButton_Click(object sender, EventArgs e)
         {
+            rollDice(false);
+            updateDiceImages();
 
+            // disable the roll button if there are no more rolls left in round
+            if (0 == hand.RollsLeft)
+                rollButton.Enabled = false;
         }
 
         private void diePictureBox1_Click(object sender, EventArgs e) { toggleHoldState(0); }
@@ -115,6 +151,7 @@ namespace Moon_Asg4_Yahtzee
                     nameof(scoringListBox1.SelectedIndex),
                     scoringListBox1.SelectedIndex,
                     "SelectedIndex of scoringListBox1 is outside the range of valid values (0-5)");
+            rollButton.Enabled = true;
         }
 
         private void setButton2_Click(object sender, EventArgs e)
@@ -152,6 +189,7 @@ namespace Moon_Asg4_Yahtzee
                     nameof(scoringListBox2.SelectedIndex),
                     scoringListBox2.SelectedIndex,
                     "SelectedIndex of scoringListBox2 is outside the range of valid values (0-6)");
+            rollButton.Enabled = true;
         }
 
         private void scoringListBox1_SelectedIndexChanged(object sender, EventArgs e)
