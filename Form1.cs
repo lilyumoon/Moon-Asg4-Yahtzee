@@ -47,6 +47,11 @@ namespace Moon_Asg4_Yahtzee
             // Reset any 'held' labels
             foreach (Label label in heldLabels)
                 label.Visible = false;
+
+            upperTotalCounterLabel.Text = "0";
+            bonusCounterLabel.Text = "0";
+            lowerTotalCounterLabel.Text = "0";
+            gameTotalCounterLabel.Text = "0";
         }
 
         private void Form1_Load(object sender, EventArgs e)
