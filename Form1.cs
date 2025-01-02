@@ -29,18 +29,24 @@ namespace Moon_Asg4_Yahtzee
 
         private void resetGame()
         {
-            // Iterate through each item in the scoring boxes, split the strings at the ':',
-            //   and set the item to be the first half of the split string
+            // Iterate through each item in the scoring boxes and save
+            // the portion before and including the ': '
             for (int i = 0; i < scoringListBox1.Items.Count; i++)
             {
-                string resetText = scoringListBox1.Items[i].ToString().Split(':')[0];
+                int splitIndex = scoringListBox1.Items[i].ToString().IndexOf(':');
+                string resetText = scoringListBox1.Items[i].ToString().Substring(0, splitIndex + 2);
                 scoringListBox1.Items[i] = resetText;
             }
             for (int i = 0; i < scoringListBox2.Items.Count; i++)
             {
-                string resetText = scoringListBox2.Items[i].ToString().Split(':')[0];
+                int splitIndex = scoringListBox2.Items[i].ToString().IndexOf(':');
+                string resetText = scoringListBox2.Items[i].ToString().Substring(0, splitIndex + 2);
                 scoringListBox2.Items[i] = resetText;
             }
+
+            // Reset any 'held' labels
+            foreach (Label label in heldLabels)
+                label.Visible = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -141,6 +147,43 @@ namespace Moon_Asg4_Yahtzee
                     nameof(scoringListBox2.SelectedIndex),
                     scoringListBox2.SelectedIndex,
                     "SelectedIndex of scoringListBox2 is outside the range of valid values (0-6)");
+        }
+
+        private void scoringListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (-1 != scoringListBox1.SelectedIndex &&
+                isItemAllowed(scoringListBox1, scoringListBox1.SelectedIndex))
+            {
+                setButton1.Enabled = true;
+            }
+            else
+                setButton1.Enabled = false;
+        }
+
+        private void scoringListBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (-1 != scoringListBox2.SelectedIndex &&
+                isItemAllowed(scoringListBox2, scoringListBox2.SelectedIndex))
+            {
+                setButton2.Enabled = true;
+            }
+            else
+                setButton2.Enabled = false;
+        }
+
+        private bool isItemAllowed(ListBox parent, int index)
+        {
+            bool isAllowed = false;
+
+            int splitIndex = parent.Items[index].ToString().IndexOf(':');
+            string resetText = parent.Items[index].ToString().Substring(0, splitIndex + 2);
+
+            // If the current item's text matches what the text would be in the item's 'reset state',
+            // it should be allowed
+            if (parent.Items[index].ToString().Length == resetText.Length)
+                isAllowed = true;
+
+            return isAllowed;
         }
     }
 }

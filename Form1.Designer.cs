@@ -43,6 +43,8 @@
             this.diePictureBox2 = new System.Windows.Forms.PictureBox();
             this.diePictureBox1 = new System.Windows.Forms.PictureBox();
             this.scoreGroupBox = new System.Windows.Forms.GroupBox();
+            this.setButton2 = new System.Windows.Forms.Button();
+            this.setButton1 = new System.Windows.Forms.Button();
             this.gameTotalCounterLabel = new System.Windows.Forms.Label();
             this.lowerTotalCounterLabel = new System.Windows.Forms.Label();
             this.bonusCounterLabel = new System.Windows.Forms.Label();
@@ -54,8 +56,6 @@
             this.scoringListBox2 = new System.Windows.Forms.ListBox();
             this.scoringListBox1 = new System.Windows.Forms.ListBox();
             this.newGameButton = new System.Windows.Forms.Button();
-            this.setButton1 = new System.Windows.Forms.Button();
-            this.setButton2 = new System.Windows.Forms.Button();
             this.diceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox4)).BeginInit();
@@ -210,6 +210,26 @@
             this.scoreGroupBox.TabIndex = 1;
             this.scoreGroupBox.TabStop = false;
             // 
+            // setButton2
+            // 
+            this.setButton2.Location = new System.Drawing.Point(600, 78);
+            this.setButton2.Name = "setButton2";
+            this.setButton2.Size = new System.Drawing.Size(50, 20);
+            this.setButton2.TabIndex = 13;
+            this.setButton2.Text = "Set";
+            this.setButton2.UseVisualStyleBackColor = true;
+            this.setButton2.Click += new System.EventHandler(this.setButton2_Click);
+            // 
+            // setButton1
+            // 
+            this.setButton1.Location = new System.Drawing.Point(273, 78);
+            this.setButton1.Name = "setButton1";
+            this.setButton1.Size = new System.Drawing.Size(50, 20);
+            this.setButton1.TabIndex = 12;
+            this.setButton1.Text = "Set";
+            this.setButton1.UseVisualStyleBackColor = true;
+            this.setButton1.Click += new System.EventHandler(this.setButton1_Click);
+            // 
             // gameTotalCounterLabel
             // 
             this.gameTotalCounterLabel.AutoSize = true;
@@ -299,6 +319,7 @@
             this.scoringListBox2.Name = "scoringListBox2";
             this.scoringListBox2.Size = new System.Drawing.Size(240, 109);
             this.scoringListBox2.TabIndex = 1;
+            this.scoringListBox2.SelectedValueChanged += new System.EventHandler(this.scoringListBox2_SelectedValueChanged);
             // 
             // scoringListBox1
             // 
@@ -316,6 +337,7 @@
             this.scoringListBox1.Name = "scoringListBox1";
             this.scoringListBox1.Size = new System.Drawing.Size(240, 109);
             this.scoringListBox1.TabIndex = 0;
+            this.scoringListBox1.SelectedIndexChanged += new System.EventHandler(this.scoringListBox1_SelectedIndexChanged);
             // 
             // newGameButton
             // 
@@ -326,26 +348,6 @@
             this.newGameButton.Text = "New Game";
             this.newGameButton.UseVisualStyleBackColor = true;
             this.newGameButton.Click += new System.EventHandler(this.newGameButton_Click);
-            // 
-            // setButton1
-            // 
-            this.setButton1.Location = new System.Drawing.Point(273, 78);
-            this.setButton1.Name = "setButton1";
-            this.setButton1.Size = new System.Drawing.Size(50, 20);
-            this.setButton1.TabIndex = 12;
-            this.setButton1.Text = "Set";
-            this.setButton1.UseVisualStyleBackColor = true;
-            this.setButton1.Click += new System.EventHandler(this.setButton1_Click);
-            // 
-            // setButton2
-            // 
-            this.setButton2.Location = new System.Drawing.Point(600, 78);
-            this.setButton2.Name = "setButton2";
-            this.setButton2.Size = new System.Drawing.Size(50, 20);
-            this.setButton2.TabIndex = 13;
-            this.setButton2.Text = "Set";
-            this.setButton2.UseVisualStyleBackColor = true;
-            this.setButton2.Click += new System.EventHandler(this.setButton2_Click);
             // 
             // Form1
             // 
