@@ -31,33 +31,38 @@
             this.components = new System.ComponentModel.Container();
             this.imageListDice = new System.Windows.Forms.ImageList(this.components);
             this.diceGroupBox = new System.Windows.Forms.GroupBox();
-            this.scoreGroupBox = new System.Windows.Forms.GroupBox();
-            this.diePictureBox1 = new System.Windows.Forms.PictureBox();
-            this.diePictureBox2 = new System.Windows.Forms.PictureBox();
-            this.diePictureBox3 = new System.Windows.Forms.PictureBox();
-            this.diePictureBox4 = new System.Windows.Forms.PictureBox();
-            this.diePictureBox5 = new System.Windows.Forms.PictureBox();
             this.rollButton = new System.Windows.Forms.Button();
-            this.newGameButton = new System.Windows.Forms.Button();
-            this.scoreBlockLeftLB = new System.Windows.Forms.ListBox();
-            this.scoreBlockRightLB = new System.Windows.Forms.ListBox();
-            this.setButton1 = new System.Windows.Forms.Button();
-            this.setButton2 = new System.Windows.Forms.Button();
-            this.upperTotalLabel = new System.Windows.Forms.Label();
-            this.bonusLabel = new System.Windows.Forms.Label();
-            this.lowerTotalLabel = new System.Windows.Forms.Label();
-            this.gameTotalLabel = new System.Windows.Forms.Label();
-            this.upperTotalCounterLabel = new System.Windows.Forms.Label();
-            this.bonusCounterLabel = new System.Windows.Forms.Label();
-            this.lowerTotalCounterLabel = new System.Windows.Forms.Label();
+            this.diePictureBox5 = new System.Windows.Forms.PictureBox();
+            this.diePictureBox4 = new System.Windows.Forms.PictureBox();
+            this.diePictureBox3 = new System.Windows.Forms.PictureBox();
+            this.diePictureBox2 = new System.Windows.Forms.PictureBox();
+            this.diePictureBox1 = new System.Windows.Forms.PictureBox();
+            this.scoreGroupBox = new System.Windows.Forms.GroupBox();
             this.gameTotalCounterLabel = new System.Windows.Forms.Label();
+            this.lowerTotalCounterLabel = new System.Windows.Forms.Label();
+            this.bonusCounterLabel = new System.Windows.Forms.Label();
+            this.upperTotalCounterLabel = new System.Windows.Forms.Label();
+            this.gameTotalLabel = new System.Windows.Forms.Label();
+            this.lowerTotalLabel = new System.Windows.Forms.Label();
+            this.bonusLabel = new System.Windows.Forms.Label();
+            this.upperTotalLabel = new System.Windows.Forms.Label();
+            this.setButton2 = new System.Windows.Forms.Button();
+            this.setButton1 = new System.Windows.Forms.Button();
+            this.scoreBlockRightLB = new System.Windows.Forms.ListBox();
+            this.scoreBlockLeftLB = new System.Windows.Forms.ListBox();
+            this.newGameButton = new System.Windows.Forms.Button();
+            this.heldLabel1 = new System.Windows.Forms.Label();
+            this.heldLabel2 = new System.Windows.Forms.Label();
+            this.heldLabel3 = new System.Windows.Forms.Label();
+            this.heldLabel4 = new System.Windows.Forms.Label();
+            this.heldLabel5 = new System.Windows.Forms.Label();
             this.diceGroupBox.SuspendLayout();
-            this.scoreGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox1)).BeginInit();
+            this.scoreGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageListDice
@@ -68,6 +73,11 @@
             // 
             // diceGroupBox
             // 
+            this.diceGroupBox.Controls.Add(this.heldLabel5);
+            this.diceGroupBox.Controls.Add(this.heldLabel4);
+            this.diceGroupBox.Controls.Add(this.heldLabel3);
+            this.diceGroupBox.Controls.Add(this.heldLabel2);
+            this.diceGroupBox.Controls.Add(this.heldLabel1);
             this.diceGroupBox.Controls.Add(this.rollButton);
             this.diceGroupBox.Controls.Add(this.diePictureBox5);
             this.diceGroupBox.Controls.Add(this.diePictureBox4);
@@ -79,6 +89,61 @@
             this.diceGroupBox.Size = new System.Drawing.Size(680, 200);
             this.diceGroupBox.TabIndex = 0;
             this.diceGroupBox.TabStop = false;
+            // 
+            // rollButton
+            // 
+            this.rollButton.Location = new System.Drawing.Point(40, 160);
+            this.rollButton.Name = "rollButton";
+            this.rollButton.Size = new System.Drawing.Size(200, 25);
+            this.rollButton.TabIndex = 5;
+            this.rollButton.Text = "Roll";
+            this.rollButton.UseVisualStyleBackColor = true;
+            this.rollButton.Click += new System.EventHandler(this.rollButton_Click);
+            // 
+            // diePictureBox5
+            // 
+            this.diePictureBox5.Location = new System.Drawing.Point(540, 35);
+            this.diePictureBox5.Name = "diePictureBox5";
+            this.diePictureBox5.Size = new System.Drawing.Size(100, 100);
+            this.diePictureBox5.TabIndex = 4;
+            this.diePictureBox5.TabStop = false;
+            this.diePictureBox5.Click += new System.EventHandler(this.diePictureBox5_Click);
+            // 
+            // diePictureBox4
+            // 
+            this.diePictureBox4.Location = new System.Drawing.Point(415, 35);
+            this.diePictureBox4.Name = "diePictureBox4";
+            this.diePictureBox4.Size = new System.Drawing.Size(100, 100);
+            this.diePictureBox4.TabIndex = 3;
+            this.diePictureBox4.TabStop = false;
+            this.diePictureBox4.Click += new System.EventHandler(this.diePictureBox4_Click);
+            // 
+            // diePictureBox3
+            // 
+            this.diePictureBox3.Location = new System.Drawing.Point(290, 35);
+            this.diePictureBox3.Name = "diePictureBox3";
+            this.diePictureBox3.Size = new System.Drawing.Size(100, 100);
+            this.diePictureBox3.TabIndex = 2;
+            this.diePictureBox3.TabStop = false;
+            this.diePictureBox3.Click += new System.EventHandler(this.diePictureBox3_Click);
+            // 
+            // diePictureBox2
+            // 
+            this.diePictureBox2.Location = new System.Drawing.Point(165, 35);
+            this.diePictureBox2.Name = "diePictureBox2";
+            this.diePictureBox2.Size = new System.Drawing.Size(100, 100);
+            this.diePictureBox2.TabIndex = 1;
+            this.diePictureBox2.TabStop = false;
+            this.diePictureBox2.Click += new System.EventHandler(this.diePictureBox2_Click);
+            // 
+            // diePictureBox1
+            // 
+            this.diePictureBox1.Location = new System.Drawing.Point(40, 35);
+            this.diePictureBox1.Name = "diePictureBox1";
+            this.diePictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.diePictureBox1.TabIndex = 0;
+            this.diePictureBox1.TabStop = false;
+            this.diePictureBox1.Click += new System.EventHandler(this.diePictureBox1_Click);
             // 
             // scoreGroupBox
             // 
@@ -100,60 +165,111 @@
             this.scoreGroupBox.TabIndex = 1;
             this.scoreGroupBox.TabStop = false;
             // 
-            // diePictureBox1
+            // gameTotalCounterLabel
             // 
-            this.diePictureBox1.Location = new System.Drawing.Point(40, 35);
-            this.diePictureBox1.Name = "diePictureBox1";
-            this.diePictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.diePictureBox1.TabIndex = 0;
-            this.diePictureBox1.TabStop = false;
-            this.diePictureBox1.Click += new System.EventHandler(this.diePictureBox1_Click);
+            this.gameTotalCounterLabel.AutoSize = true;
+            this.gameTotalCounterLabel.Location = new System.Drawing.Point(456, 171);
+            this.gameTotalCounterLabel.Name = "gameTotalCounterLabel";
+            this.gameTotalCounterLabel.Size = new System.Drawing.Size(13, 13);
+            this.gameTotalCounterLabel.TabIndex = 11;
+            this.gameTotalCounterLabel.Text = "0";
             // 
-            // diePictureBox2
+            // lowerTotalCounterLabel
             // 
-            this.diePictureBox2.Location = new System.Drawing.Point(165, 35);
-            this.diePictureBox2.Name = "diePictureBox2";
-            this.diePictureBox2.Size = new System.Drawing.Size(100, 100);
-            this.diePictureBox2.TabIndex = 1;
-            this.diePictureBox2.TabStop = false;
-            this.diePictureBox2.Click += new System.EventHandler(this.diePictureBox2_Click);
+            this.lowerTotalCounterLabel.AutoSize = true;
+            this.lowerTotalCounterLabel.Location = new System.Drawing.Point(456, 147);
+            this.lowerTotalCounterLabel.Name = "lowerTotalCounterLabel";
+            this.lowerTotalCounterLabel.Size = new System.Drawing.Size(13, 13);
+            this.lowerTotalCounterLabel.TabIndex = 10;
+            this.lowerTotalCounterLabel.Text = "0";
             // 
-            // diePictureBox3
+            // bonusCounterLabel
             // 
-            this.diePictureBox3.Location = new System.Drawing.Point(290, 35);
-            this.diePictureBox3.Name = "diePictureBox3";
-            this.diePictureBox3.Size = new System.Drawing.Size(100, 100);
-            this.diePictureBox3.TabIndex = 2;
-            this.diePictureBox3.TabStop = false;
-            this.diePictureBox3.Click += new System.EventHandler(this.diePictureBox3_Click);
+            this.bonusCounterLabel.AutoSize = true;
+            this.bonusCounterLabel.Location = new System.Drawing.Point(136, 171);
+            this.bonusCounterLabel.Name = "bonusCounterLabel";
+            this.bonusCounterLabel.Size = new System.Drawing.Size(13, 13);
+            this.bonusCounterLabel.TabIndex = 9;
+            this.bonusCounterLabel.Text = "0";
             // 
-            // diePictureBox4
+            // upperTotalCounterLabel
             // 
-            this.diePictureBox4.Location = new System.Drawing.Point(415, 35);
-            this.diePictureBox4.Name = "diePictureBox4";
-            this.diePictureBox4.Size = new System.Drawing.Size(100, 100);
-            this.diePictureBox4.TabIndex = 3;
-            this.diePictureBox4.TabStop = false;
-            this.diePictureBox4.Click += new System.EventHandler(this.diePictureBox4_Click);
+            this.upperTotalCounterLabel.AutoSize = true;
+            this.upperTotalCounterLabel.Location = new System.Drawing.Point(136, 147);
+            this.upperTotalCounterLabel.Name = "upperTotalCounterLabel";
+            this.upperTotalCounterLabel.Size = new System.Drawing.Size(13, 13);
+            this.upperTotalCounterLabel.TabIndex = 8;
+            this.upperTotalCounterLabel.Text = "0";
             // 
-            // diePictureBox5
+            // gameTotalLabel
             // 
-            this.diePictureBox5.Location = new System.Drawing.Point(540, 35);
-            this.diePictureBox5.Name = "diePictureBox5";
-            this.diePictureBox5.Size = new System.Drawing.Size(100, 100);
-            this.diePictureBox5.TabIndex = 4;
-            this.diePictureBox5.TabStop = false;
-            this.diePictureBox5.Click += new System.EventHandler(this.diePictureBox5_Click);
+            this.gameTotalLabel.AutoSize = true;
+            this.gameTotalLabel.Location = new System.Drawing.Point(363, 171);
+            this.gameTotalLabel.Name = "gameTotalLabel";
+            this.gameTotalLabel.Size = new System.Drawing.Size(65, 13);
+            this.gameTotalLabel.TabIndex = 7;
+            this.gameTotalLabel.Text = "Game Total:";
             // 
-            // rollButton
+            // lowerTotalLabel
             // 
-            this.rollButton.Location = new System.Drawing.Point(40, 160);
-            this.rollButton.Name = "rollButton";
-            this.rollButton.Size = new System.Drawing.Size(200, 25);
-            this.rollButton.TabIndex = 5;
-            this.rollButton.Text = "Roll";
-            this.rollButton.UseVisualStyleBackColor = true;
-            this.rollButton.Click += new System.EventHandler(this.rollButton_Click);
+            this.lowerTotalLabel.AutoSize = true;
+            this.lowerTotalLabel.Location = new System.Drawing.Point(363, 147);
+            this.lowerTotalLabel.Name = "lowerTotalLabel";
+            this.lowerTotalLabel.Size = new System.Drawing.Size(66, 13);
+            this.lowerTotalLabel.TabIndex = 6;
+            this.lowerTotalLabel.Text = "Lower Total:";
+            // 
+            // bonusLabel
+            // 
+            this.bonusLabel.AutoSize = true;
+            this.bonusLabel.Location = new System.Drawing.Point(40, 171);
+            this.bonusLabel.Name = "bonusLabel";
+            this.bonusLabel.Size = new System.Drawing.Size(76, 13);
+            this.bonusLabel.TabIndex = 5;
+            this.bonusLabel.Text = "Bonus ( > 62 ):";
+            // 
+            // upperTotalLabel
+            // 
+            this.upperTotalLabel.AutoSize = true;
+            this.upperTotalLabel.Location = new System.Drawing.Point(40, 147);
+            this.upperTotalLabel.Name = "upperTotalLabel";
+            this.upperTotalLabel.Size = new System.Drawing.Size(66, 13);
+            this.upperTotalLabel.TabIndex = 4;
+            this.upperTotalLabel.Text = "Upper Total:";
+            // 
+            // setButton2
+            // 
+            this.setButton2.Location = new System.Drawing.Point(597, 71);
+            this.setButton2.Name = "setButton2";
+            this.setButton2.Size = new System.Drawing.Size(75, 23);
+            this.setButton2.TabIndex = 3;
+            this.setButton2.Text = "Set";
+            this.setButton2.UseVisualStyleBackColor = true;
+            // 
+            // setButton1
+            // 
+            this.setButton1.Location = new System.Drawing.Point(271, 71);
+            this.setButton1.Name = "setButton1";
+            this.setButton1.Size = new System.Drawing.Size(75, 23);
+            this.setButton1.TabIndex = 2;
+            this.setButton1.Text = "Set";
+            this.setButton1.UseVisualStyleBackColor = true;
+            // 
+            // scoreBlockRightLB
+            // 
+            this.scoreBlockRightLB.FormattingEnabled = true;
+            this.scoreBlockRightLB.Location = new System.Drawing.Point(366, 19);
+            this.scoreBlockRightLB.Name = "scoreBlockRightLB";
+            this.scoreBlockRightLB.Size = new System.Drawing.Size(225, 121);
+            this.scoreBlockRightLB.TabIndex = 1;
+            // 
+            // scoreBlockLeftLB
+            // 
+            this.scoreBlockLeftLB.FormattingEnabled = true;
+            this.scoreBlockLeftLB.Location = new System.Drawing.Point(40, 19);
+            this.scoreBlockLeftLB.Name = "scoreBlockLeftLB";
+            this.scoreBlockLeftLB.Size = new System.Drawing.Size(225, 121);
+            this.scoreBlockLeftLB.TabIndex = 0;
             // 
             // newGameButton
             // 
@@ -165,111 +281,50 @@
             this.newGameButton.UseVisualStyleBackColor = true;
             this.newGameButton.Click += new System.EventHandler(this.newGameButton_Click);
             // 
-            // scoreBlockLeftLB
+            // heldLabel1
             // 
-            this.scoreBlockLeftLB.FormattingEnabled = true;
-            this.scoreBlockLeftLB.Location = new System.Drawing.Point(40, 19);
-            this.scoreBlockLeftLB.Name = "scoreBlockLeftLB";
-            this.scoreBlockLeftLB.Size = new System.Drawing.Size(225, 121);
-            this.scoreBlockLeftLB.TabIndex = 0;
+            this.heldLabel1.AutoSize = true;
+            this.heldLabel1.Location = new System.Drawing.Point(50, 138);
+            this.heldLabel1.Name = "heldLabel1";
+            this.heldLabel1.Size = new System.Drawing.Size(66, 13);
+            this.heldLabel1.TabIndex = 6;
+            this.heldLabel1.Text = "*** HELD ***";
             // 
-            // scoreBlockRightLB
+            // heldLabel2
             // 
-            this.scoreBlockRightLB.FormattingEnabled = true;
-            this.scoreBlockRightLB.Location = new System.Drawing.Point(366, 19);
-            this.scoreBlockRightLB.Name = "scoreBlockRightLB";
-            this.scoreBlockRightLB.Size = new System.Drawing.Size(225, 121);
-            this.scoreBlockRightLB.TabIndex = 1;
+            this.heldLabel2.AutoSize = true;
+            this.heldLabel2.Location = new System.Drawing.Point(185, 138);
+            this.heldLabel2.Name = "heldLabel2";
+            this.heldLabel2.Size = new System.Drawing.Size(66, 13);
+            this.heldLabel2.TabIndex = 7;
+            this.heldLabel2.Text = "*** HELD ***";
             // 
-            // setButton1
+            // heldLabel3
             // 
-            this.setButton1.Location = new System.Drawing.Point(271, 71);
-            this.setButton1.Name = "setButton1";
-            this.setButton1.Size = new System.Drawing.Size(75, 23);
-            this.setButton1.TabIndex = 2;
-            this.setButton1.Text = "Set";
-            this.setButton1.UseVisualStyleBackColor = true;
+            this.heldLabel3.AutoSize = true;
+            this.heldLabel3.Location = new System.Drawing.Point(308, 138);
+            this.heldLabel3.Name = "heldLabel3";
+            this.heldLabel3.Size = new System.Drawing.Size(66, 13);
+            this.heldLabel3.TabIndex = 8;
+            this.heldLabel3.Text = "*** HELD ***";
             // 
-            // setButton2
+            // heldLabel4
             // 
-            this.setButton2.Location = new System.Drawing.Point(597, 71);
-            this.setButton2.Name = "setButton2";
-            this.setButton2.Size = new System.Drawing.Size(75, 23);
-            this.setButton2.TabIndex = 3;
-            this.setButton2.Text = "Set";
-            this.setButton2.UseVisualStyleBackColor = true;
+            this.heldLabel4.AutoSize = true;
+            this.heldLabel4.Location = new System.Drawing.Point(432, 138);
+            this.heldLabel4.Name = "heldLabel4";
+            this.heldLabel4.Size = new System.Drawing.Size(66, 13);
+            this.heldLabel4.TabIndex = 9;
+            this.heldLabel4.Text = "*** HELD ***";
             // 
-            // upperTotalLabel
+            // heldLabel5
             // 
-            this.upperTotalLabel.AutoSize = true;
-            this.upperTotalLabel.Location = new System.Drawing.Point(40, 147);
-            this.upperTotalLabel.Name = "upperTotalLabel";
-            this.upperTotalLabel.Size = new System.Drawing.Size(66, 13);
-            this.upperTotalLabel.TabIndex = 4;
-            this.upperTotalLabel.Text = "Upper Total:";
-            // 
-            // bonusLabel
-            // 
-            this.bonusLabel.AutoSize = true;
-            this.bonusLabel.Location = new System.Drawing.Point(40, 171);
-            this.bonusLabel.Name = "bonusLabel";
-            this.bonusLabel.Size = new System.Drawing.Size(76, 13);
-            this.bonusLabel.TabIndex = 5;
-            this.bonusLabel.Text = "Bonus ( > 62 ):";
-            // 
-            // lowerTotalLabel
-            // 
-            this.lowerTotalLabel.AutoSize = true;
-            this.lowerTotalLabel.Location = new System.Drawing.Point(363, 147);
-            this.lowerTotalLabel.Name = "lowerTotalLabel";
-            this.lowerTotalLabel.Size = new System.Drawing.Size(66, 13);
-            this.lowerTotalLabel.TabIndex = 6;
-            this.lowerTotalLabel.Text = "Lower Total:";
-            // 
-            // gameTotalLabel
-            // 
-            this.gameTotalLabel.AutoSize = true;
-            this.gameTotalLabel.Location = new System.Drawing.Point(363, 171);
-            this.gameTotalLabel.Name = "gameTotalLabel";
-            this.gameTotalLabel.Size = new System.Drawing.Size(65, 13);
-            this.gameTotalLabel.TabIndex = 7;
-            this.gameTotalLabel.Text = "Game Total:";
-            // 
-            // upperTotalCounterLabel
-            // 
-            this.upperTotalCounterLabel.AutoSize = true;
-            this.upperTotalCounterLabel.Location = new System.Drawing.Point(136, 147);
-            this.upperTotalCounterLabel.Name = "upperTotalCounterLabel";
-            this.upperTotalCounterLabel.Size = new System.Drawing.Size(13, 13);
-            this.upperTotalCounterLabel.TabIndex = 8;
-            this.upperTotalCounterLabel.Text = "0";
-            // 
-            // bonusCounterLabel
-            // 
-            this.bonusCounterLabel.AutoSize = true;
-            this.bonusCounterLabel.Location = new System.Drawing.Point(136, 171);
-            this.bonusCounterLabel.Name = "bonusCounterLabel";
-            this.bonusCounterLabel.Size = new System.Drawing.Size(13, 13);
-            this.bonusCounterLabel.TabIndex = 9;
-            this.bonusCounterLabel.Text = "0";
-            // 
-            // lowerTotalCounterLabel
-            // 
-            this.lowerTotalCounterLabel.AutoSize = true;
-            this.lowerTotalCounterLabel.Location = new System.Drawing.Point(456, 147);
-            this.lowerTotalCounterLabel.Name = "lowerTotalCounterLabel";
-            this.lowerTotalCounterLabel.Size = new System.Drawing.Size(13, 13);
-            this.lowerTotalCounterLabel.TabIndex = 10;
-            this.lowerTotalCounterLabel.Text = "0";
-            // 
-            // gameTotalCounterLabel
-            // 
-            this.gameTotalCounterLabel.AutoSize = true;
-            this.gameTotalCounterLabel.Location = new System.Drawing.Point(456, 171);
-            this.gameTotalCounterLabel.Name = "gameTotalCounterLabel";
-            this.gameTotalCounterLabel.Size = new System.Drawing.Size(13, 13);
-            this.gameTotalCounterLabel.TabIndex = 11;
-            this.gameTotalCounterLabel.Text = "0";
+            this.heldLabel5.AutoSize = true;
+            this.heldLabel5.Location = new System.Drawing.Point(557, 138);
+            this.heldLabel5.Name = "heldLabel5";
+            this.heldLabel5.Size = new System.Drawing.Size(66, 13);
+            this.heldLabel5.TabIndex = 10;
+            this.heldLabel5.Text = "*** HELD ***";
             // 
             // Form1
             // 
@@ -283,13 +338,14 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.diceGroupBox.ResumeLayout(false);
+            this.diceGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox1)).EndInit();
             this.scoreGroupBox.ResumeLayout(false);
             this.scoreGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.diePictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -318,6 +374,11 @@
         private System.Windows.Forms.Label lowerTotalLabel;
         private System.Windows.Forms.Label bonusLabel;
         private System.Windows.Forms.Label upperTotalLabel;
+        private System.Windows.Forms.Label heldLabel1;
+        private System.Windows.Forms.Label heldLabel5;
+        private System.Windows.Forms.Label heldLabel4;
+        private System.Windows.Forms.Label heldLabel3;
+        private System.Windows.Forms.Label heldLabel2;
     }
 }
 

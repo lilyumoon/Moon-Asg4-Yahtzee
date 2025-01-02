@@ -12,7 +12,7 @@ namespace Moon_Asg4_Yahtzee
 {
     public partial class Form1 : Form
     {
-        private bool[] heldDice = new bool[5];
+        private Label[] heldLabels = new Label[5];
 
         public Form1()
         {
@@ -22,8 +22,9 @@ namespace Moon_Asg4_Yahtzee
 
         private void setup()
         {
-            for (int i = 0; i < heldDice.Length; i++)
-                heldDice[i] = false;
+            foreach (Label label in heldLabels)
+                label.Visible = false;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,29 +42,19 @@ namespace Moon_Asg4_Yahtzee
 
         }
 
-        private void diePictureBox1_Click(object sender, EventArgs e)
+        private void diePictureBox1_Click(object sender, EventArgs e) { toggleHoldState(0); }
+
+        private void diePictureBox2_Click(object sender, EventArgs e) { toggleHoldState(1); }
+
+        private void diePictureBox3_Click(object sender, EventArgs e) { toggleHoldState(2); }
+
+        private void diePictureBox4_Click(object sender, EventArgs e) { toggleHoldState(3); }
+
+        private void diePictureBox5_Click(object sender, EventArgs e) { toggleHoldState(4); }
+
+        private void toggleHoldState(int dieIndex)
         {
-
-        }
-
-        private void diePictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void diePictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void diePictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void diePictureBox5_Click(object sender, EventArgs e)
-        {
-
+            heldLabels[dieIndex].Visible = !heldLabels[dieIndex].Visible;
         }
 
 
