@@ -212,6 +212,7 @@
             // 
             // setButton2
             // 
+            this.setButton2.Enabled = false;
             this.setButton2.Location = new System.Drawing.Point(600, 78);
             this.setButton2.Name = "setButton2";
             this.setButton2.Size = new System.Drawing.Size(50, 20);
@@ -222,6 +223,7 @@
             // 
             // setButton1
             // 
+            this.setButton1.Enabled = false;
             this.setButton1.Location = new System.Drawing.Point(273, 78);
             this.setButton1.Name = "setButton1";
             this.setButton1.Size = new System.Drawing.Size(50, 20);
@@ -319,7 +321,7 @@
             this.scoringListBox2.Name = "scoringListBox2";
             this.scoringListBox2.Size = new System.Drawing.Size(240, 109);
             this.scoringListBox2.TabIndex = 1;
-            this.scoringListBox2.SelectedValueChanged += new System.EventHandler(this.scoringListBox2_SelectedValueChanged);
+            this.scoringListBox2.SelectedIndexChanged += new System.EventHandler(this.scoringListBox2_SelectedIndexChanged);
             // 
             // scoringListBox1
             // 
