@@ -204,7 +204,7 @@ namespace Moon_Asg4_Yahtzee
                 throw new ArgumentOutOfRangeException(
                     nameof(upperScoringListBox.SelectedIndex),
                     upperScoringListBox.SelectedIndex,
-                    "SelectedIndex of scoringListBox1 is outside the range of valid values (0-5)");
+                    "SelectedIndex of upperScoringListBox is outside the range of valid values (0-5)");
 
 
             upperScoringListBox.Items[upperScoringListBox.SelectedIndex] += points.ToString();
@@ -240,7 +240,7 @@ namespace Moon_Asg4_Yahtzee
             else if (4 == lowerScoringListBox.SelectedIndex)
                 points = score.scoreLargeStraight(dieValues);
 
-            else if (5 == scoringListBox2.SelectedIndex)
+            else if (5 == lowerScoringListBox.SelectedIndex)
                 points = score.scoreYahtzee(dieValues);
 
             else if (6 == lowerScoringListBox.SelectedIndex)
@@ -250,7 +250,7 @@ namespace Moon_Asg4_Yahtzee
                 throw new ArgumentOutOfRangeException(
                     nameof(lowerScoringListBox.SelectedIndex),
                     lowerScoringListBox.SelectedIndex,
-                    "SelectedIndex of scoringListBox2 is outside the range of valid values (0-6)");
+                    "SelectedIndex of lowerScoringListBox is outside the range of valid values (0-6)");
 
             lowerScoringListBox.Items[lowerScoringListBox.SelectedIndex] += points.ToString();
             int newLowerTotal = int.Parse(lowerTotalCounterLabel.Text) + points;
