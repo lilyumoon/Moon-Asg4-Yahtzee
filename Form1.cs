@@ -211,7 +211,42 @@ namespace Moon_Asg4_Yahtzee
             int newUpperTotal = int.Parse(upperTotalCounterLabel.Text) + points;
             upperTotalCounterLabel.Text = newUpperTotal.ToString();
 
+            // If any points were earned this round, update totals
+            if (points > 0)
+            {
+                // Check for bonus points
+                checkForBonusPoints();
+
+                // Update game total
+                updateGameTotalPoints(points);
+            }
+
             startNewRound();
+        }
+
+        private void checkForBonusPoints()
+        {
+            // Only check for bonus points if they haven't already been added
+            if (bonusCounterLabel.Text == "0")
+            {
+                // Get upper total. If 63 or greater, add bonus points
+                int upperTotal = int.Parse(upperTotalCounterLabel.Text);
+                if (upperTotal > 62)
+                {
+                    int bonusPoints = 35;
+                    bonusCounterLabel.Text = bonusPoints.ToString();
+
+                    updateGameTotalPoints(bonusPoints);
+                }
+            }
+        }
+
+        private void updateGameTotalPoints(int points)
+        {
+            int gameTotalPoints = int.Parse(gameTotalCounterLabel.Text);
+            gameTotalPoints += points;
+
+            gameTotalCounterLabel.Text = gameTotalPoints.ToString();
         }
 
         /// <summary>
@@ -255,6 +290,10 @@ namespace Moon_Asg4_Yahtzee
             lowerScoringListBox.Items[lowerScoringListBox.SelectedIndex] += points.ToString();
             int newLowerTotal = int.Parse(lowerTotalCounterLabel.Text) + points;
             lowerTotalCounterLabel.Text = newLowerTotal.ToString();
+
+            // If any points were earned this round, update game total
+            if (points > 0)
+                updateGameTotalPoints(points);
 
             startNewRound();
         }
