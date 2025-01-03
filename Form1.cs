@@ -239,8 +239,8 @@ namespace Moon_Asg4_Yahtzee
 
             else if (4 == lowerScoringListBox.SelectedIndex)
                 points = score.scoreLargeStraight(dieValues);
-            
-            else if (5 == lowerScoringListBox.SelectedIndex)
+
+            else if (5 == scoringListBox2.SelectedIndex)
                 points = score.scoreYahtzee(dieValues);
 
             else if (6 == lowerScoringListBox.SelectedIndex)
