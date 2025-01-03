@@ -13,9 +13,11 @@ namespace Moon_Asg4_Yahtzee
 {
     public partial class Form1 : Form
     {
-        private Label[] heldLabels = new Label[5];
+        private PictureBox[] dicePictureBoxes;
+        private Label[] heldLabels;
 
         private Hand hand;
+        private Score score;
 
         public Form1()
         {
@@ -25,17 +27,68 @@ namespace Moon_Asg4_Yahtzee
 
         private void setup()
         {
+            dicePictureBoxes = new PictureBox[] { diePictureBox1, diePictureBox2, diePictureBox3, diePictureBox4, diePictureBox5 };
             heldLabels = new Label[] { heldLabel1, heldLabel2, heldLabel3, heldLabel4, heldLabel5 };
-            clearHeldDice();
+            hand = new Hand(imageListDice);
+            score = new Score();
         }
 
-        private void clearHeldDice()
+        private void startNewGame()
         {
+            // Reset counters
+            resetScore();
+
+            startNewRound();
+        }
+
+        private void startNewRound()
+        {
+            // Reset # of rolls left and update counter
+            hand.resetRollsLeft();
+            rollsLeftCounterLabel.Text = hand.RollsLeft.ToString();
+
+            resetDice();
+            rollButton.Enabled = true;
+            setButton1.Enabled = false;
+            setButton2.Enabled = false;
+            scoringListBox1.Enabled = false;
+            scoringListBox2.Enabled = false;
+        }
+
+        private void rollDice()
+        {
+            // Find which dice should be rolled.
+            bool[] diceToRoll = new bool[5];
+            for (int i = 0; i < heldLabels.Length; i++)
+            {
+                // If the die is not being held, it should be rolled
+                if (!heldLabels[i].Visible)
+                    diceToRoll[i] = true;
+            }
+            // Tell the hand to roll those dice.
+            hand.rollDice(diceToRoll);
+            // Update rolls left counter
+            rollsLeftCounterLabel.Text = hand.RollsLeft.ToString();
+        }
+
+        private void resetDice()
+        {
+            // Clear displayed dice images and enable the picturebox
+            for (int i = 0; i < dicePictureBoxes.Length; i++)
+            {
+                if (!dicePictureBoxes[i].Enabled)
+                    dicePictureBoxes[i].Enabled = true;
+                // TODO: dispose does not actually clear the image. Instead, set to empty die (or skip this entirely)
+                if (null != dicePictureBoxes[i].Image)
+                    dicePictureBoxes[i].Image.Dispose();
+            }
+
+            // Reset 'held' labels
             foreach (Label label in heldLabels)
                 label.Visible = false;
         }
 
-        private void resetGame()
+        private void resetScore()
         {
             // Iterate through each item in the scoring boxes and save
             // the portion before and including the ': '. Discaard the rest.
@@ -52,37 +105,31 @@ namespace Moon_Asg4_Yahtzee
                 scoringListBox2.Items[i] = resetText;
             }
 
-            // Reset any 'held' labels and counters.
-            clearHeldDice();
+            // Reset score counters
             upperTotalCounterLabel.Text = "0";
             bonusCounterLabel.Text = "0";
             lowerTotalCounterLabel.Text = "0";
             gameTotalCounterLabel.Text = "0";
         }
 
-        private void rollDice(bool isNewRound)
-        {
-            // Find which dice should be rolled.
-            bool[] diceToRoll = new bool[5];
-            for (int i = 0; i < heldLabels.Length; i++)
-            {
-                // If the die is not being held, it should be rolled
-                if (!heldLabels[i].Visible)
-                    diceToRoll[i] = true;
-            }
-            // Tell the hand to roll those dice.
-            hand.rollDice(diceToRoll, isNewRound);
-        }
-
         private void updateDiceImages()
         {
-
+            Image[] dieImages = hand.getCurrentDieImages();
+            for (int i = 0; i < dicePictureBoxes.Length; i++)
+            {
+                dicePictureBoxes[i].Image = dieImages[i];
+            }
         }
 
-        private void newRound()
+        private void pauseRoundForScoring()
         {
-            clearHeldDice();
-            rollDice(true);
+            rollButton.Enabled = false;
+            scoringListBox1.Enabled = true;
+            scoringListBox2.Enabled = true;
+
+            // disable picture boxes so the 'held' labels cannot be toggled during scoring
+            foreach (PictureBox dicePictureBox in dicePictureBoxes)
+                dicePictureBox.Enabled = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -92,17 +139,17 @@ namespace Moon_Asg4_Yahtzee
 
         private void newGameButton_Click(object sender, EventArgs e)
         {
-            resetGame();
+            startNewGame();
         }
 
         private void rollButton_Click(object sender, EventArgs e)
         {
-            rollDice(false);
+            rollDice();
             updateDiceImages();
 
-            // disable the roll button if there are no more rolls left in round
+            // disable the roll button if there are no more rolls left in current round
             if (0 == hand.RollsLeft)
-                rollButton.Enabled = false;
+                pauseRoundForScoring();
         }
 
         private void diePictureBox1_Click(object sender, EventArgs e) { toggleHoldState(0); }
@@ -120,76 +167,105 @@ namespace Moon_Asg4_Yahtzee
             heldLabels[dieIndex].Visible = !heldLabels[dieIndex].Visible;
         }
 
+        /// <summary>
+        /// Event handler for the Set button connected to the Upper portion of Yahtzee scoring.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         private void setButton1_Click(object sender, EventArgs e)
         {
+            int points = 0;
+            int[] diceValues = hand.getDieValues();
+
             if (0 == scoringListBox1.SelectedIndex)
             {
-
+                points = score.scoreOnes(diceValues);
             }
             else if (1 == scoringListBox1.SelectedIndex)
             {
-
+                points = score.scoreTwos(diceValues);
             }
             else if (2 == scoringListBox1.SelectedIndex)
             {
-
+                points = score.scoreThrees(diceValues);
             }
             else if (3 == scoringListBox1.SelectedIndex)
             {
-
+                points = score.scoreFours(diceValues);
             }
             else if (4 == scoringListBox1.SelectedIndex)
             {
-
+                points = score.scoreFives(diceValues);
             }
             else if (5 == scoringListBox1.SelectedIndex)
             {
-
+                points = score.scoreSixes(diceValues);
             }
             else 
                 throw new ArgumentOutOfRangeException(
                     nameof(scoringListBox1.SelectedIndex),
                     scoringListBox1.SelectedIndex,
                     "SelectedIndex of scoringListBox1 is outside the range of valid values (0-5)");
-            rollButton.Enabled = true;
+
+
+            scoringListBox1.Items[scoringListBox1.SelectedIndex] += points.ToString();
+            int newUpperTotal = int.Parse(upperTotalCounterLabel.Text) + points;
+            upperTotalCounterLabel.Text = newUpperTotal.ToString();
+
+            startNewRound();
         }
 
+        /// <summary>
+        /// Event handler for the Set button connected to the Lower portion of Yahtzee scoring.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         private void setButton2_Click(object sender, EventArgs e)
         {
+            int points = 0;
+            int[] diceValues = hand.getDieValues();
+            
             if (0 == scoringListBox2.SelectedIndex)
             {
-
+                points = score.scoreThreeOfAKind(diceValues);
             }
             else if (1 == scoringListBox2.SelectedIndex)
             {
-
+                points = score.scoreFourOfAKind(diceValues);
             }
             else if (2 == scoringListBox2.SelectedIndex)
             {
-
+                points = score.scoreFullHouse(diceValues);
             }
             else if (3 == scoringListBox2.SelectedIndex)
             {
-
+                points = score.scoreSmallStraight(diceValues);
             }
             else if (4 == scoringListBox2.SelectedIndex)
             {
-
+                points = score.scoreLargeStraight(diceValues);
             }
             else if (5 == scoringListBox2.SelectedIndex)
             {
-
+                points = score.scoreYahtzee(diceValues);
             }
             else if (6 == scoringListBox2.SelectedIndex)
             {
-
+                points = score.scoreChance(diceValues);
             }
             else
                 throw new ArgumentOutOfRangeException(
                     nameof(scoringListBox2.SelectedIndex),
                     scoringListBox2.SelectedIndex,
                     "SelectedIndex of scoringListBox2 is outside the range of valid values (0-6)");
-            rollButton.Enabled = true;
+
+            scoringListBox2.Items[scoringListBox2.SelectedIndex] += points.ToString();
+            int newLowerTotal = int.Parse(lowerTotalCounterLabel.Text) + points;
+            lowerTotalCounterLabel.Text = newLowerTotal.ToString();
+
+            startNewRound();
         }
 
         private void scoringListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -228,5 +304,6 @@ namespace Moon_Asg4_Yahtzee
 
             return isAllowed;
         }
+
     }
 }

@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.imageListDice = new System.Windows.Forms.ImageList(this.components);
             this.diceGroupBox = new System.Windows.Forms.GroupBox();
+            this.rollsLeftCounterLabel = new System.Windows.Forms.Label();
+            this.rollsLeftLabel = new System.Windows.Forms.Label();
             this.heldLabel5 = new System.Windows.Forms.Label();
             this.heldLabel4 = new System.Windows.Forms.Label();
             this.heldLabel3 = new System.Windows.Forms.Label();
@@ -67,12 +70,19 @@
             // 
             // imageListDice
             // 
-            this.imageListDice.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageListDice.ImageSize = new System.Drawing.Size(100, 100);
+            this.imageListDice.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListDice.ImageStream")));
             this.imageListDice.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListDice.Images.SetKeyName(0, "1Die.bmp");
+            this.imageListDice.Images.SetKeyName(1, "2Die.bmp");
+            this.imageListDice.Images.SetKeyName(2, "3Die.bmp");
+            this.imageListDice.Images.SetKeyName(3, "4Die.bmp");
+            this.imageListDice.Images.SetKeyName(4, "5Die.bmp");
+            this.imageListDice.Images.SetKeyName(5, "6Die.bmp");
             // 
             // diceGroupBox
             // 
+            this.diceGroupBox.Controls.Add(this.rollsLeftCounterLabel);
+            this.diceGroupBox.Controls.Add(this.rollsLeftLabel);
             this.diceGroupBox.Controls.Add(this.heldLabel5);
             this.diceGroupBox.Controls.Add(this.heldLabel4);
             this.diceGroupBox.Controls.Add(this.heldLabel3);
@@ -90,6 +100,23 @@
             this.diceGroupBox.TabIndex = 0;
             this.diceGroupBox.TabStop = false;
             // 
+            // rollsLeftCounterLabel
+            // 
+            this.rollsLeftCounterLabel.AutoSize = true;
+            this.rollsLeftCounterLabel.Location = new System.Drawing.Point(620, 166);
+            this.rollsLeftCounterLabel.Name = "rollsLeftCounterLabel";
+            this.rollsLeftCounterLabel.Size = new System.Drawing.Size(0, 13);
+            this.rollsLeftCounterLabel.TabIndex = 15;
+            // 
+            // rollsLeftLabel
+            // 
+            this.rollsLeftLabel.AutoSize = true;
+            this.rollsLeftLabel.Location = new System.Drawing.Point(569, 166);
+            this.rollsLeftLabel.Name = "rollsLeftLabel";
+            this.rollsLeftLabel.Size = new System.Drawing.Size(54, 13);
+            this.rollsLeftLabel.TabIndex = 14;
+            this.rollsLeftLabel.Text = "Rolls Left:";
+            // 
             // heldLabel5
             // 
             this.heldLabel5.AutoSize = true;
@@ -98,6 +125,7 @@
             this.heldLabel5.Size = new System.Drawing.Size(66, 13);
             this.heldLabel5.TabIndex = 10;
             this.heldLabel5.Text = "*** HELD ***";
+            this.heldLabel5.Visible = false;
             // 
             // heldLabel4
             // 
@@ -107,6 +135,7 @@
             this.heldLabel4.Size = new System.Drawing.Size(66, 13);
             this.heldLabel4.TabIndex = 9;
             this.heldLabel4.Text = "*** HELD ***";
+            this.heldLabel4.Visible = false;
             // 
             // heldLabel3
             // 
@@ -116,6 +145,7 @@
             this.heldLabel3.Size = new System.Drawing.Size(66, 13);
             this.heldLabel3.TabIndex = 8;
             this.heldLabel3.Text = "*** HELD ***";
+            this.heldLabel3.Visible = false;
             // 
             // heldLabel2
             // 
@@ -125,6 +155,7 @@
             this.heldLabel2.Size = new System.Drawing.Size(66, 13);
             this.heldLabel2.TabIndex = 7;
             this.heldLabel2.Text = "*** HELD ***";
+            this.heldLabel2.Visible = false;
             // 
             // heldLabel1
             // 
@@ -134,9 +165,11 @@
             this.heldLabel1.Size = new System.Drawing.Size(66, 13);
             this.heldLabel1.TabIndex = 6;
             this.heldLabel1.Text = "*** HELD ***";
+            this.heldLabel1.Visible = false;
             // 
             // rollButton
             // 
+            this.rollButton.Enabled = false;
             this.rollButton.Location = new System.Drawing.Point(40, 160);
             this.rollButton.Name = "rollButton";
             this.rollButton.Size = new System.Drawing.Size(200, 25);
@@ -306,6 +339,7 @@
             // 
             // scoringListBox2
             // 
+            this.scoringListBox2.Enabled = false;
             this.scoringListBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.scoringListBox2.FormattingEnabled = true;
             this.scoringListBox2.ItemHeight = 15;
@@ -325,6 +359,7 @@
             // 
             // scoringListBox1
             // 
+            this.scoringListBox1.Enabled = false;
             this.scoringListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.scoringListBox1.FormattingEnabled = true;
             this.scoringListBox1.ItemHeight = 15;
@@ -360,7 +395,7 @@
             this.Controls.Add(this.scoreGroupBox);
             this.Controls.Add(this.diceGroupBox);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Moon Yahtzee";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.diceGroupBox.ResumeLayout(false);
             this.diceGroupBox.PerformLayout();
@@ -396,7 +431,6 @@
         private System.Windows.Forms.Label gameTotalLabel;
         private System.Windows.Forms.Label lowerTotalLabel;
         private System.Windows.Forms.Label bonusLabel;
-        private System.Windows.Forms.Label upperTotalLabel;
         private System.Windows.Forms.Label heldLabel1;
         private System.Windows.Forms.Label heldLabel5;
         private System.Windows.Forms.Label heldLabel4;
@@ -404,6 +438,9 @@
         private System.Windows.Forms.Label heldLabel2;
         private System.Windows.Forms.Button setButton1;
         private System.Windows.Forms.Button setButton2;
+        private System.Windows.Forms.Label rollsLeftCounterLabel;
+        private System.Windows.Forms.Label rollsLeftLabel;
+        private System.Windows.Forms.Label upperTotalLabel;
     }
 }
 

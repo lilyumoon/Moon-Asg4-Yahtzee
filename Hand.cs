@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,12 @@ namespace Moon_Asg4_Yahtzee
         private ImageList dieImages;
 
         private int rollsLeft = -1;
-        public int RollsLeft { get; }
+        public int RollsLeft { get => rollsLeft; }
 
-        public Hand(ImageList dieImages) {         
+        public Hand(ImageList dieImages) {
             this.dieImages = dieImages;
 
+            // Instantiate 5 new Dice objects and populate the dice array with them
             dice = new Die[5];
             for (int i = 0; i < dice.Length; i++)
                 dice[i] = new Die(dieImages);
@@ -29,24 +31,20 @@ namespace Moon_Asg4_Yahtzee
         /// Rolls any dice not marked as 'held'.
         /// </summary>
         /// <param name="diceToRoll">A bool array indicating which dice to roll. (true -> roll)</param>
-        /// <param name="isNewRound">True if new round.</param>
-        public void rollDice(bool[] diceToRoll, bool isNewRound)
+        public void rollDice(bool[] diceToRoll)
         {
             // Iterate through the dice to roll, and roll the die at that index if it should be rolled
-
-            //Enumerable.Range(0, 5).ToList().ForEach(n => {
-            //    if (diceToRoll[n]) dice[n].rollDie(); 
-            //});
-
             for (int i = 0; i < diceToRoll.Length; i++)
             {
                 if (diceToRoll[i])
                     dice[i].rollDie();
             }
-            if (isNewRound)
-                rollsLeft = 2;
-            else
-                rollsLeft -= 1;
+            rollsLeft -= 1;
+        }
+
+        public void resetRollsLeft()
+        {
+            rollsLeft = 3;
         }
 
         /// <summary>
@@ -60,6 +58,16 @@ namespace Moon_Asg4_Yahtzee
             for (int i = 0; i < dieValues.Length; i++)
                 dieValues[i] = dice[i].Value;
             return dieValues;
+        }
+
+        public Image[] getCurrentDieImages()
+        {
+            Image[] dieImages = new Image[5];
+            for (int i = 0; i < dice.Length; i++)
+            {
+                dieImages[i] = dice[i].DieImage;
+            }
+            return dieImages;
         }
 
         
