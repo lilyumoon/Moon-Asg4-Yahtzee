@@ -38,14 +38,19 @@ namespace Moon_Asg4_Yahtzee
             // Reset counters
             resetScore();
 
+            hand.resetRoundsRemaining();
+
+            if (gameOverLabel.Visible)
+                gameOverLabel.Visible = false;
+
             startNewRound();
         }
 
         private void startNewRound()
         {
-            // Reset # of rolls left and update counter
-            hand.resetRollsLeft();
-            rollsLeftCounterLabel.Text = hand.RollsLeft.ToString();
+            // Reset # of rolls left, decrement rounds left, and update counter
+            hand.startNewRound();
+            rollsLeftCounterLabel.Text = hand.RollsRemaining.ToString();
 
             resetDice();
             rollButton.Enabled = true;
@@ -70,10 +75,10 @@ namespace Moon_Asg4_Yahtzee
             hand.rollDice(diceToRoll);
 
             // Update rolls left counter
-            rollsLeftCounterLabel.Text = hand.RollsLeft.ToString();
+            rollsLeftCounterLabel.Text = hand.RollsRemaining.ToString();
 
             // If this was the last roll in the round, 'pause' for scoring
-            if (hand.RollsLeft == 0)
+            if (hand.RollsRemaining == 0)
                 pauseRoundForScoring();
         }
 
@@ -165,7 +170,7 @@ namespace Moon_Asg4_Yahtzee
         /// <param name="dieIndex"></param>
         private void toggleHoldState(int dieIndex)
         {
-            int rollsLeft = hand.RollsLeft;
+            int rollsLeft = hand.RollsRemaining;
 
             if (rollsLeft < 3 && rollsLeft > 0)
                 heldLabels[dieIndex].Visible = !heldLabels[dieIndex].Visible;
@@ -221,32 +226,10 @@ namespace Moon_Asg4_Yahtzee
                 updateGameTotalPoints(points);
             }
 
-            startNewRound();
-        }
-
-        private void checkForBonusPoints()
-        {
-            // Only check for bonus points if they haven't already been added
-            if (bonusCounterLabel.Text == "0")
-            {
-                // Get upper total. If 63 or greater, add bonus points
-                int upperTotal = int.Parse(upperTotalCounterLabel.Text);
-                if (upperTotal > 62)
-                {
-                    int bonusPoints = 35;
-                    bonusCounterLabel.Text = bonusPoints.ToString();
-
-                    updateGameTotalPoints(bonusPoints);
-                }
-            }
-        }
-
-        private void updateGameTotalPoints(int points)
-        {
-            int gameTotalPoints = int.Parse(gameTotalCounterLabel.Text);
-            gameTotalPoints += points;
-
-            gameTotalCounterLabel.Text = gameTotalPoints.ToString();
+            if (hand.RoundsRemaining > 0)
+                startNewRound();
+            else
+                gameOverLabel.Visible = true;
         }
 
         /// <summary>
@@ -295,7 +278,35 @@ namespace Moon_Asg4_Yahtzee
             if (points > 0)
                 updateGameTotalPoints(points);
 
-            startNewRound();
+            if (hand.RoundsRemaining > 0)
+                startNewRound();
+            else
+                gameOverLabel.Visible = true;
+        }
+
+        private void checkForBonusPoints()
+        {
+            // Only check for bonus points if they haven't already been added
+            if (bonusCounterLabel.Text == "0")
+            {
+                // Get upper total. If 63 or greater, add bonus points
+                int upperTotal = int.Parse(upperTotalCounterLabel.Text);
+                if (upperTotal > 62)
+                {
+                    int bonusPoints = 35;
+                    bonusCounterLabel.Text = bonusPoints.ToString();
+
+                    updateGameTotalPoints(bonusPoints);
+                }
+            }
+        }
+
+        private void updateGameTotalPoints(int points)
+        {
+            int gameTotalPoints = int.Parse(gameTotalCounterLabel.Text);
+            gameTotalPoints += points;
+
+            gameTotalCounterLabel.Text = gameTotalPoints.ToString();
         }
 
         private void upperScoringListBox_SelectedIndexChanged(object sender, EventArgs e)

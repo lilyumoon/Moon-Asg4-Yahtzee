@@ -59,6 +59,7 @@
             this.lowerScoringListBox = new System.Windows.Forms.ListBox();
             this.upperScoringListBox = new System.Windows.Forms.ListBox();
             this.newGameButton = new System.Windows.Forms.Button();
+            this.gameOverLabel = new System.Windows.Forms.Label();
             this.diceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox4)).BeginInit();
@@ -81,6 +82,7 @@
             // 
             // diceGroupBox
             // 
+            this.diceGroupBox.Controls.Add(this.gameOverLabel);
             this.diceGroupBox.Controls.Add(this.rollsLeftCounterLabel);
             this.diceGroupBox.Controls.Add(this.rollsLeftLabel);
             this.diceGroupBox.Controls.Add(this.heldLabel5);
@@ -243,22 +245,22 @@
             this.scoreGroupBox.TabIndex = 1;
             this.scoreGroupBox.TabStop = false;
             // 
-            // setButton2
+            // lowerSetButton
             // 
             this.lowerSetButton.Enabled = false;
             this.lowerSetButton.Location = new System.Drawing.Point(600, 78);
-            this.lowerSetButton.Name = "setButton2";
+            this.lowerSetButton.Name = "lowerSetButton";
             this.lowerSetButton.Size = new System.Drawing.Size(50, 20);
             this.lowerSetButton.TabIndex = 13;
             this.lowerSetButton.Text = "Set";
             this.lowerSetButton.UseVisualStyleBackColor = true;
             this.lowerSetButton.Click += new System.EventHandler(this.lowerSetButton_Click);
             // 
-            // setButton1
+            // upperSetButton
             // 
             this.upperSetButton.Enabled = false;
             this.upperSetButton.Location = new System.Drawing.Point(273, 78);
-            this.upperSetButton.Name = "setButton1";
+            this.upperSetButton.Name = "upperSetButton";
             this.upperSetButton.Size = new System.Drawing.Size(50, 20);
             this.upperSetButton.TabIndex = 12;
             this.upperSetButton.Text = "Set";
@@ -386,6 +388,18 @@
             this.newGameButton.UseVisualStyleBackColor = true;
             this.newGameButton.Click += new System.EventHandler(this.newGameButton_Click);
             // 
+            // gameOverLabel
+            // 
+            this.gameOverLabel.AutoSize = true;
+            this.gameOverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameOverLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.gameOverLabel.Location = new System.Drawing.Point(290, 165);
+            this.gameOverLabel.Name = "gameOverLabel";
+            this.gameOverLabel.Size = new System.Drawing.Size(236, 20);
+            this.gameOverLabel.TabIndex = 16;
+            this.gameOverLabel.Text = "Game\'s over! How\'d you do?";
+            this.gameOverLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,6 +455,7 @@
         private System.Windows.Forms.Label rollsLeftCounterLabel;
         private System.Windows.Forms.Label rollsLeftLabel;
         private System.Windows.Forms.Label upperTotalLabel;
+        private System.Windows.Forms.Label gameOverLabel;
     }
 }
 
