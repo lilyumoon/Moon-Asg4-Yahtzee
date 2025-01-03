@@ -16,8 +16,11 @@ namespace Moon_Asg4_Yahtzee
         private Die[] dice;
         private ImageList dieImages;
 
-        private int rollsLeft = -1;
-        public int RollsLeft { get => rollsLeft; }
+        private int rollsRemaining = -1;
+        private int roundsRemaining = -1;
+
+        public int RollsRemaining { get => rollsRemaining; }
+        public int RoundsRemaining { get => roundsRemaining; }
 
         public Hand(ImageList dieImages) {
             this.dieImages = dieImages;
@@ -40,12 +43,18 @@ namespace Moon_Asg4_Yahtzee
                 if (diceToRoll[i])
                     dice[i].rollDie();
             }
-            rollsLeft -= 1;
+            rollsRemaining -= 1;
         }
 
-        public void resetRollsLeft()
+        public void resetRoundsRemaining()
         {
-            rollsLeft = 3;
+            roundsRemaining = 13;
+        }
+
+        public void startNewRound()
+        {
+            rollsRemaining = 3;
+            roundsRemaining -= 1;
         }
 
         /// <summary>
