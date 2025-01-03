@@ -118,7 +118,7 @@ namespace Moon_Asg4_Yahtzee
 
         private void updateDiceImages()
         {
-            Image[] dieImages = hand.getCurrentDieImages();
+            Image[] dieImages = hand.getDieImages();
             for (int i = 0; i < dicePictureBoxes.Length; i++)
             {
                 dicePictureBoxes[i].Image = dieImages[i];
@@ -159,7 +159,7 @@ namespace Moon_Asg4_Yahtzee
         private void diePictureBox5_Click(object sender, EventArgs e) { toggleHoldState(4); }
 
         /// <summary>
-        /// Toggles the 'held' state of a die, if the first roll has occurred
+        /// Toggles the 'held' state of a die, if the first roll has occurred,
         /// and if there are any rolls remaining in the round.
         /// </summary>
         /// <param name="dieIndex"></param>
@@ -180,32 +180,26 @@ namespace Moon_Asg4_Yahtzee
         private void setButton1_Click(object sender, EventArgs e)
         {
             int points = 0;
-            int[] diceValues = hand.getDieValues();
+            int[] dieValues = hand.getDieValues();
 
             if (0 == scoringListBox1.SelectedIndex)
-            {
-                points = score.scoreOnes(diceValues);
-            }
+                points = score.scoreOnes(dieValues);
+            
             else if (1 == scoringListBox1.SelectedIndex)
-            {
-                points = score.scoreTwos(diceValues);
-            }
+                points = score.scoreTwos(dieValues);
+            
             else if (2 == scoringListBox1.SelectedIndex)
-            {
-                points = score.scoreThrees(diceValues);
-            }
+                points = score.scoreThrees(dieValues);
+            
             else if (3 == scoringListBox1.SelectedIndex)
-            {
-                points = score.scoreFours(diceValues);
-            }
+                points = score.scoreFours(dieValues);
+            
             else if (4 == scoringListBox1.SelectedIndex)
-            {
-                points = score.scoreFives(diceValues);
-            }
+                points = score.scoreFives(dieValues);
+            
             else if (5 == scoringListBox1.SelectedIndex)
-            {
-                points = score.scoreSixes(diceValues);
-            }
+                points = score.scoreSixes(dieValues);
+            
             else 
                 throw new ArgumentOutOfRangeException(
                     nameof(scoringListBox1.SelectedIndex),
@@ -229,36 +223,29 @@ namespace Moon_Asg4_Yahtzee
         private void setButton2_Click(object sender, EventArgs e)
         {
             int points = 0;
-            int[] diceValues = hand.getDieValues();
+            int[] dieValues = hand.getDieValues();
             
             if (0 == scoringListBox2.SelectedIndex)
-            {
-                points = score.scoreThreeOfAKind(diceValues);
-            }
+                points = score.scoreThreeOfAKind(dieValues);
+
             else if (1 == scoringListBox2.SelectedIndex)
-            {
-                points = score.scoreFourOfAKind(diceValues);
-            }
+                points = score.scoreFourOfAKind(dieValues);
+
             else if (2 == scoringListBox2.SelectedIndex)
-            {
-                points = score.scoreFullHouse(diceValues);
-            }
+                points = score.scoreFullHouse(dieValues);
+
             else if (3 == scoringListBox2.SelectedIndex)
-            {
-                points = score.scoreSmallStraight(diceValues);
-            }
+                points = score.scoreSmallStraight(dieValues);
+
             else if (4 == scoringListBox2.SelectedIndex)
-            {
-                points = score.scoreLargeStraight(diceValues);
-            }
+                points = score.scoreLargeStraight(dieValues);
+
             else if (5 == scoringListBox2.SelectedIndex)
-            {
-                points = score.scoreYahtzee(diceValues);
-            }
+                points = score.scoreYahtzee(dieValues);
+
             else if (6 == scoringListBox2.SelectedIndex)
-            {
-                points = score.scoreChance(diceValues);
-            }
+                points = score.scoreChance(dieValues);
+
             else
                 throw new ArgumentOutOfRangeException(
                     nameof(scoringListBox2.SelectedIndex),
@@ -275,7 +262,7 @@ namespace Moon_Asg4_Yahtzee
         private void scoringListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (-1 != scoringListBox1.SelectedIndex &&
-                isItemAllowed(scoringListBox1, scoringListBox1.SelectedIndex))
+                isSelectionAllowed(scoringListBox1, scoringListBox1.SelectedIndex))
             {
                 setButton1.Enabled = true;
             }
@@ -286,7 +273,7 @@ namespace Moon_Asg4_Yahtzee
         private void scoringListBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (-1 != scoringListBox2.SelectedIndex &&
-                isItemAllowed(scoringListBox2, scoringListBox2.SelectedIndex))
+                isSelectionAllowed(scoringListBox2, scoringListBox2.SelectedIndex))
             {
                 setButton2.Enabled = true;
             }
@@ -294,7 +281,7 @@ namespace Moon_Asg4_Yahtzee
                 setButton2.Enabled = false;
         }
 
-        private bool isItemAllowed(ListBox parent, int index)
+        private bool isSelectionAllowed(ListBox parent, int index)
         {
             bool isAllowed = false;
 

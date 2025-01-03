@@ -14,7 +14,7 @@ namespace Moon_Asg4_Yahtzee
         private Image dieImage;
         private ImageList dieImages;
         
-        public int Value { get; }
+        public int Value { get => dieValue; }
         public Image DieImage { get => dieImage; }
 
         public Die(ImageList dieImages) 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -57,10 +58,11 @@ namespace Moon_Asg4_Yahtzee
             int[] dieValues = new int[5];
             for (int i = 0; i < dieValues.Length; i++)
                 dieValues[i] = dice[i].Value;
+
             return dieValues;
         }
 
-        public Image[] getCurrentDieImages()
+        public Image[] getDieImages()
         {
             Image[] dieImages = new Image[5];
             for (int i = 0; i < dice.Length; i++)
