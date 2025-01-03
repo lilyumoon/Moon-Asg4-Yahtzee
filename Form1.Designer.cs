@@ -46,8 +46,8 @@
             this.diePictureBox2 = new System.Windows.Forms.PictureBox();
             this.diePictureBox1 = new System.Windows.Forms.PictureBox();
             this.scoreGroupBox = new System.Windows.Forms.GroupBox();
-            this.setButton2 = new System.Windows.Forms.Button();
-            this.setButton1 = new System.Windows.Forms.Button();
+            this.lowerSetButton = new System.Windows.Forms.Button();
+            this.upperSetButton = new System.Windows.Forms.Button();
             this.gameTotalCounterLabel = new System.Windows.Forms.Label();
             this.lowerTotalCounterLabel = new System.Windows.Forms.Label();
             this.bonusCounterLabel = new System.Windows.Forms.Label();
@@ -56,8 +56,8 @@
             this.lowerTotalLabel = new System.Windows.Forms.Label();
             this.bonusLabel = new System.Windows.Forms.Label();
             this.upperTotalLabel = new System.Windows.Forms.Label();
-            this.scoringListBox2 = new System.Windows.Forms.ListBox();
-            this.scoringListBox1 = new System.Windows.Forms.ListBox();
+            this.lowerScoringListBox = new System.Windows.Forms.ListBox();
+            this.upperScoringListBox = new System.Windows.Forms.ListBox();
             this.newGameButton = new System.Windows.Forms.Button();
             this.diceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox5)).BeginInit();
@@ -225,8 +225,8 @@
             // 
             // scoreGroupBox
             // 
-            this.scoreGroupBox.Controls.Add(this.setButton2);
-            this.scoreGroupBox.Controls.Add(this.setButton1);
+            this.scoreGroupBox.Controls.Add(this.lowerSetButton);
+            this.scoreGroupBox.Controls.Add(this.upperSetButton);
             this.scoreGroupBox.Controls.Add(this.gameTotalCounterLabel);
             this.scoreGroupBox.Controls.Add(this.lowerTotalCounterLabel);
             this.scoreGroupBox.Controls.Add(this.bonusCounterLabel);
@@ -235,8 +235,8 @@
             this.scoreGroupBox.Controls.Add(this.lowerTotalLabel);
             this.scoreGroupBox.Controls.Add(this.bonusLabel);
             this.scoreGroupBox.Controls.Add(this.upperTotalLabel);
-            this.scoreGroupBox.Controls.Add(this.scoringListBox2);
-            this.scoreGroupBox.Controls.Add(this.scoringListBox1);
+            this.scoreGroupBox.Controls.Add(this.lowerScoringListBox);
+            this.scoreGroupBox.Controls.Add(this.upperScoringListBox);
             this.scoreGroupBox.Location = new System.Drawing.Point(22, 228);
             this.scoreGroupBox.Name = "scoreGroupBox";
             this.scoreGroupBox.Size = new System.Drawing.Size(680, 200);
@@ -245,25 +245,25 @@
             // 
             // setButton2
             // 
-            this.setButton2.Enabled = false;
-            this.setButton2.Location = new System.Drawing.Point(600, 78);
-            this.setButton2.Name = "setButton2";
-            this.setButton2.Size = new System.Drawing.Size(50, 20);
-            this.setButton2.TabIndex = 13;
-            this.setButton2.Text = "Set";
-            this.setButton2.UseVisualStyleBackColor = true;
-            this.setButton2.Click += new System.EventHandler(this.setButton2_Click);
+            this.lowerSetButton.Enabled = false;
+            this.lowerSetButton.Location = new System.Drawing.Point(600, 78);
+            this.lowerSetButton.Name = "setButton2";
+            this.lowerSetButton.Size = new System.Drawing.Size(50, 20);
+            this.lowerSetButton.TabIndex = 13;
+            this.lowerSetButton.Text = "Set";
+            this.lowerSetButton.UseVisualStyleBackColor = true;
+            this.lowerSetButton.Click += new System.EventHandler(this.lowerSetButton_Click);
             // 
             // setButton1
             // 
-            this.setButton1.Enabled = false;
-            this.setButton1.Location = new System.Drawing.Point(273, 78);
-            this.setButton1.Name = "setButton1";
-            this.setButton1.Size = new System.Drawing.Size(50, 20);
-            this.setButton1.TabIndex = 12;
-            this.setButton1.Text = "Set";
-            this.setButton1.UseVisualStyleBackColor = true;
-            this.setButton1.Click += new System.EventHandler(this.setButton1_Click);
+            this.upperSetButton.Enabled = false;
+            this.upperSetButton.Location = new System.Drawing.Point(273, 78);
+            this.upperSetButton.Name = "setButton1";
+            this.upperSetButton.Size = new System.Drawing.Size(50, 20);
+            this.upperSetButton.TabIndex = 12;
+            this.upperSetButton.Text = "Set";
+            this.upperSetButton.UseVisualStyleBackColor = true;
+            this.upperSetButton.Click += new System.EventHandler(this.upperSetButton_Click);
             // 
             // gameTotalCounterLabel
             // 
@@ -337,13 +337,13 @@
             this.upperTotalLabel.TabIndex = 4;
             this.upperTotalLabel.Text = "Upper Total:";
             // 
-            // scoringListBox2
+            // lowerScoringListBox
             // 
-            this.scoringListBox2.Enabled = false;
-            this.scoringListBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.scoringListBox2.FormattingEnabled = true;
-            this.scoringListBox2.ItemHeight = 15;
-            this.scoringListBox2.Items.AddRange(new object[] {
+            this.lowerScoringListBox.Enabled = false;
+            this.lowerScoringListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.lowerScoringListBox.FormattingEnabled = true;
+            this.lowerScoringListBox.ItemHeight = 15;
+            this.lowerScoringListBox.Items.AddRange(new object[] {
             "Three of a Kind: ",
             "Four of a Kind: ",
             "Full House: ",
@@ -351,30 +351,30 @@
             "Large Straight: ",
             "Yahtzee: ",
             "Chance: "});
-            this.scoringListBox2.Location = new System.Drawing.Point(354, 19);
-            this.scoringListBox2.Name = "scoringListBox2";
-            this.scoringListBox2.Size = new System.Drawing.Size(240, 109);
-            this.scoringListBox2.TabIndex = 1;
-            this.scoringListBox2.SelectedIndexChanged += new System.EventHandler(this.scoringListBox2_SelectedIndexChanged);
+            this.lowerScoringListBox.Location = new System.Drawing.Point(354, 19);
+            this.lowerScoringListBox.Name = "lowerScoringListBox";
+            this.lowerScoringListBox.Size = new System.Drawing.Size(240, 109);
+            this.lowerScoringListBox.TabIndex = 1;
+            this.lowerScoringListBox.SelectedIndexChanged += new System.EventHandler(this.lowerScoringListBox_SelectedIndexChanged);
             // 
-            // scoringListBox1
+            // upperScoringListBox
             // 
-            this.scoringListBox1.Enabled = false;
-            this.scoringListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.scoringListBox1.FormattingEnabled = true;
-            this.scoringListBox1.ItemHeight = 15;
-            this.scoringListBox1.Items.AddRange(new object[] {
+            this.upperScoringListBox.Enabled = false;
+            this.upperScoringListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.upperScoringListBox.FormattingEnabled = true;
+            this.upperScoringListBox.ItemHeight = 15;
+            this.upperScoringListBox.Items.AddRange(new object[] {
             "Ones: ",
             "Twos: ",
             "Threes: ",
             "Fours: ",
             "Fives: ",
             "Sixes: "});
-            this.scoringListBox1.Location = new System.Drawing.Point(28, 19);
-            this.scoringListBox1.Name = "scoringListBox1";
-            this.scoringListBox1.Size = new System.Drawing.Size(240, 109);
-            this.scoringListBox1.TabIndex = 0;
-            this.scoringListBox1.SelectedIndexChanged += new System.EventHandler(this.scoringListBox1_SelectedIndexChanged);
+            this.upperScoringListBox.Location = new System.Drawing.Point(28, 19);
+            this.upperScoringListBox.Name = "upperScoringListBox";
+            this.upperScoringListBox.Size = new System.Drawing.Size(240, 109);
+            this.upperScoringListBox.TabIndex = 0;
+            this.upperScoringListBox.SelectedIndexChanged += new System.EventHandler(this.upperScoringListBox_SelectedIndexChanged);
             // 
             // newGameButton
             // 
@@ -422,8 +422,8 @@
         private System.Windows.Forms.PictureBox diePictureBox2;
         private System.Windows.Forms.PictureBox diePictureBox1;
         private System.Windows.Forms.Button newGameButton;
-        private System.Windows.Forms.ListBox scoringListBox1;
-        private System.Windows.Forms.ListBox scoringListBox2;
+        private System.Windows.Forms.ListBox upperScoringListBox;
+        private System.Windows.Forms.ListBox lowerScoringListBox;
         private System.Windows.Forms.Label gameTotalCounterLabel;
         private System.Windows.Forms.Label lowerTotalCounterLabel;
         private System.Windows.Forms.Label bonusCounterLabel;
@@ -436,8 +436,8 @@
         private System.Windows.Forms.Label heldLabel4;
         private System.Windows.Forms.Label heldLabel3;
         private System.Windows.Forms.Label heldLabel2;
-        private System.Windows.Forms.Button setButton1;
-        private System.Windows.Forms.Button setButton2;
+        private System.Windows.Forms.Button upperSetButton;
+        private System.Windows.Forms.Button lowerSetButton;
         private System.Windows.Forms.Label rollsLeftCounterLabel;
         private System.Windows.Forms.Label rollsLeftLabel;
         private System.Windows.Forms.Label upperTotalLabel;

@@ -49,10 +49,10 @@ namespace Moon_Asg4_Yahtzee
 
             resetDice();
             rollButton.Enabled = true;
-            setButton1.Enabled = false;
-            setButton2.Enabled = false;
-            scoringListBox1.Enabled = false;
-            scoringListBox2.Enabled = false;
+            upperSetButton.Enabled = false;
+            lowerSetButton.Enabled = false;
+            upperScoringListBox.Enabled = false;
+            lowerScoringListBox.Enabled = false;
         }
 
         private void rollDice()
@@ -96,17 +96,17 @@ namespace Moon_Asg4_Yahtzee
         {
             // Iterate through each item in the scoring boxes and save
             // the portion before and including the ': '. Discaard the rest.
-            for (int i = 0; i < scoringListBox1.Items.Count; i++)
+            for (int i = 0; i < upperScoringListBox.Items.Count; i++)
             {
-                int splitIndex = scoringListBox1.Items[i].ToString().IndexOf(':');
-                string resetText = scoringListBox1.Items[i].ToString().Substring(0, splitIndex + 2);
-                scoringListBox1.Items[i] = resetText;
+                int splitIndex = upperScoringListBox.Items[i].ToString().IndexOf(':');
+                string resetText = upperScoringListBox.Items[i].ToString().Substring(0, splitIndex + 2);
+                upperScoringListBox.Items[i] = resetText;
             }
-            for (int i = 0; i < scoringListBox2.Items.Count; i++)
+            for (int i = 0; i < lowerScoringListBox.Items.Count; i++)
             {
-                int splitIndex = scoringListBox2.Items[i].ToString().IndexOf(':');
-                string resetText = scoringListBox2.Items[i].ToString().Substring(0, splitIndex + 2);
-                scoringListBox2.Items[i] = resetText;
+                int splitIndex = lowerScoringListBox.Items[i].ToString().IndexOf(':');
+                string resetText = lowerScoringListBox.Items[i].ToString().Substring(0, splitIndex + 2);
+                lowerScoringListBox.Items[i] = resetText;
             }
 
             // Reset score counters
@@ -128,8 +128,8 @@ namespace Moon_Asg4_Yahtzee
         private void pauseRoundForScoring()
         {
             rollButton.Enabled = false;
-            scoringListBox1.Enabled = true;
-            scoringListBox2.Enabled = true;
+            upperScoringListBox.Enabled = true;
+            lowerScoringListBox.Enabled = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -177,37 +177,37 @@ namespace Moon_Asg4_Yahtzee
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        private void setButton1_Click(object sender, EventArgs e)
+        private void upperSetButton_Click(object sender, EventArgs e)
         {
             int points = 0;
             int[] dieValues = hand.getDieValues();
 
-            if (0 == scoringListBox1.SelectedIndex)
+            if (0 == upperScoringListBox.SelectedIndex)
                 points = score.scoreOnes(dieValues);
             
-            else if (1 == scoringListBox1.SelectedIndex)
+            else if (1 == upperScoringListBox.SelectedIndex)
                 points = score.scoreTwos(dieValues);
             
-            else if (2 == scoringListBox1.SelectedIndex)
+            else if (2 == upperScoringListBox.SelectedIndex)
                 points = score.scoreThrees(dieValues);
             
-            else if (3 == scoringListBox1.SelectedIndex)
+            else if (3 == upperScoringListBox.SelectedIndex)
                 points = score.scoreFours(dieValues);
             
-            else if (4 == scoringListBox1.SelectedIndex)
+            else if (4 == upperScoringListBox.SelectedIndex)
                 points = score.scoreFives(dieValues);
             
-            else if (5 == scoringListBox1.SelectedIndex)
+            else if (5 == upperScoringListBox.SelectedIndex)
                 points = score.scoreSixes(dieValues);
             
             else 
                 throw new ArgumentOutOfRangeException(
-                    nameof(scoringListBox1.SelectedIndex),
-                    scoringListBox1.SelectedIndex,
+                    nameof(upperScoringListBox.SelectedIndex),
+                    upperScoringListBox.SelectedIndex,
                     "SelectedIndex of scoringListBox1 is outside the range of valid values (0-5)");
 
 
-            scoringListBox1.Items[scoringListBox1.SelectedIndex] += points.ToString();
+            upperScoringListBox.Items[upperScoringListBox.SelectedIndex] += points.ToString();
             int newUpperTotal = int.Parse(upperTotalCounterLabel.Text) + points;
             upperTotalCounterLabel.Text = newUpperTotal.ToString();
 
@@ -220,65 +220,65 @@ namespace Moon_Asg4_Yahtzee
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        private void setButton2_Click(object sender, EventArgs e)
+        private void lowerSetButton_Click(object sender, EventArgs e)
         {
             int points = 0;
             int[] dieValues = hand.getDieValues();
             
-            if (0 == scoringListBox2.SelectedIndex)
+            if (0 == lowerScoringListBox.SelectedIndex)
                 points = score.scoreThreeOfAKind(dieValues);
 
-            else if (1 == scoringListBox2.SelectedIndex)
+            else if (1 == lowerScoringListBox.SelectedIndex)
                 points = score.scoreFourOfAKind(dieValues);
 
-            else if (2 == scoringListBox2.SelectedIndex)
+            else if (2 == lowerScoringListBox.SelectedIndex)
                 points = score.scoreFullHouse(dieValues);
 
-            else if (3 == scoringListBox2.SelectedIndex)
+            else if (3 == lowerScoringListBox.SelectedIndex)
                 points = score.scoreSmallStraight(dieValues);
 
-            else if (4 == scoringListBox2.SelectedIndex)
+            else if (4 == lowerScoringListBox.SelectedIndex)
                 points = score.scoreLargeStraight(dieValues);
-
-            else if (5 == scoringListBox2.SelectedIndex)
+            
+            else if (5 == lowerScoringListBox.SelectedIndex)
                 points = score.scoreYahtzee(dieValues);
 
-            else if (6 == scoringListBox2.SelectedIndex)
+            else if (6 == lowerScoringListBox.SelectedIndex)
                 points = score.scoreChance(dieValues);
 
             else
                 throw new ArgumentOutOfRangeException(
-                    nameof(scoringListBox2.SelectedIndex),
-                    scoringListBox2.SelectedIndex,
+                    nameof(lowerScoringListBox.SelectedIndex),
+                    lowerScoringListBox.SelectedIndex,
                     "SelectedIndex of scoringListBox2 is outside the range of valid values (0-6)");
 
-            scoringListBox2.Items[scoringListBox2.SelectedIndex] += points.ToString();
+            lowerScoringListBox.Items[lowerScoringListBox.SelectedIndex] += points.ToString();
             int newLowerTotal = int.Parse(lowerTotalCounterLabel.Text) + points;
             lowerTotalCounterLabel.Text = newLowerTotal.ToString();
 
             startNewRound();
         }
 
-        private void scoringListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void upperScoringListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (-1 != scoringListBox1.SelectedIndex &&
-                isSelectionAllowed(scoringListBox1, scoringListBox1.SelectedIndex))
+            if (-1 != upperScoringListBox.SelectedIndex &&
+                isSelectionAllowed(upperScoringListBox, upperScoringListBox.SelectedIndex))
             {
-                setButton1.Enabled = true;
+                upperSetButton.Enabled = true;
             }
             else
-                setButton1.Enabled = false;
+                upperSetButton.Enabled = false;
         }
 
-        private void scoringListBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void lowerScoringListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (-1 != scoringListBox2.SelectedIndex &&
-                isSelectionAllowed(scoringListBox2, scoringListBox2.SelectedIndex))
+            if (-1 != lowerScoringListBox.SelectedIndex &&
+                isSelectionAllowed(lowerScoringListBox, lowerScoringListBox.SelectedIndex))
             {
-                setButton2.Enabled = true;
+                lowerSetButton.Enabled = true;
             }
             else
-                setButton2.Enabled = false;
+                lowerSetButton.Enabled = false;
         }
 
         private bool isSelectionAllowed(ListBox parent, int index)
