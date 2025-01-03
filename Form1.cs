@@ -65,10 +65,16 @@ namespace Moon_Asg4_Yahtzee
                 if (!heldLabels[i].Visible)
                     diceToRoll[i] = true;
             }
-            // Tell the hand to roll those dice.
+
+            // Tell hand to roll those dice.
             hand.rollDice(diceToRoll);
+
             // Update rolls left counter
             rollsLeftCounterLabel.Text = hand.RollsLeft.ToString();
+
+            // If this was the last roll in the round, 'pause' for scoring
+            if (hand.RollsLeft == 0)
+                pauseRoundForScoring();
         }
 
         private void resetDice()
@@ -76,8 +82,6 @@ namespace Moon_Asg4_Yahtzee
             // Clear displayed dice images and enable the picturebox
             for (int i = 0; i < dicePictureBoxes.Length; i++)
             {
-                if (!dicePictureBoxes[i].Enabled)
-                    dicePictureBoxes[i].Enabled = true;
                 // TODO: dispose does not actually clear the image. Instead, set to empty die (or skip this entirely)
                 if (null != dicePictureBoxes[i].Image)
                     dicePictureBoxes[i].Image.Dispose();
@@ -126,10 +130,6 @@ namespace Moon_Asg4_Yahtzee
             rollButton.Enabled = false;
             scoringListBox1.Enabled = true;
             scoringListBox2.Enabled = true;
-
-            // disable picture boxes so the 'held' labels cannot be toggled during scoring
-            foreach (PictureBox dicePictureBox in dicePictureBoxes)
-                dicePictureBox.Enabled = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -146,10 +146,6 @@ namespace Moon_Asg4_Yahtzee
         {
             rollDice();
             updateDiceImages();
-
-            // disable the roll button if there are no more rolls left in current round
-            if (0 == hand.RollsLeft)
-                pauseRoundForScoring();
         }
 
         private void diePictureBox1_Click(object sender, EventArgs e) { toggleHoldState(0); }
@@ -162,9 +158,17 @@ namespace Moon_Asg4_Yahtzee
 
         private void diePictureBox5_Click(object sender, EventArgs e) { toggleHoldState(4); }
 
+        /// <summary>
+        /// Toggles the 'held' state of a die, if the first roll has occurred
+        /// and if there are any rolls remaining in the round.
+        /// </summary>
+        /// <param name="dieIndex"></param>
         private void toggleHoldState(int dieIndex)
         {
-            heldLabels[dieIndex].Visible = !heldLabels[dieIndex].Visible;
+            int rollsLeft = hand.RollsLeft;
+
+            if (rollsLeft < 3 && rollsLeft > 0)
+                heldLabels[dieIndex].Visible = !heldLabels[dieIndex].Visible;
         }
 
         /// <summary>
