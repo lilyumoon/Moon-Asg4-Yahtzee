@@ -82,6 +82,10 @@ namespace Moon_Asg4_Yahtzee
             return dieValues;
         }
 
+        /// <summary>
+        /// Gets an Image array containing the Images of each Die in the Hand.
+        /// </summary>
+        /// <returns>An array of Images of the dice.</returns>
         public Image[] getDieImages()
         {
             Image[] dieImages = new Image[5];
