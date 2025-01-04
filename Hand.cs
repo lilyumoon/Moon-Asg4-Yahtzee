@@ -46,15 +46,26 @@ namespace Moon_Asg4_Yahtzee
             rollsRemaining -= 1;
         }
 
+        /// <summary>
+        /// Resets remaining rounds to 13, standard for a 'new game' in Yahtzee
+        /// </summary>
         public void resetRoundsRemaining()
         {
             roundsRemaining = 13;
         }
 
+        /// <summary>
+        /// New round "clean-up" method; Resets remaining rolls, remaining rounds, and dice.
+        /// </summary>
         public void startNewRound()
         {
             rollsRemaining = 3;
             roundsRemaining -= 1;
+
+            foreach (Die die in dice)
+            {
+                die.resetDie();
+            }
         }
 
         /// <summary>

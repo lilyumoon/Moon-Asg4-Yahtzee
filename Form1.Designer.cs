@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.imageListDice = new System.Windows.Forms.ImageList(this.components);
             this.diceGroupBox = new System.Windows.Forms.GroupBox();
+            this.gameOverLabel = new System.Windows.Forms.Label();
             this.rollsLeftCounterLabel = new System.Windows.Forms.Label();
             this.rollsLeftLabel = new System.Windows.Forms.Label();
             this.heldLabel5 = new System.Windows.Forms.Label();
@@ -59,7 +60,8 @@
             this.lowerScoringListBox = new System.Windows.Forms.ListBox();
             this.upperScoringListBox = new System.Windows.Forms.ListBox();
             this.newGameButton = new System.Windows.Forms.Button();
-            this.gameOverLabel = new System.Windows.Forms.Label();
+            this.highScoreLabel = new System.Windows.Forms.Label();
+            this.highScoreCounterLabel = new System.Windows.Forms.Label();
             this.diceGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.diePictureBox4)).BeginInit();
@@ -102,10 +104,22 @@
             this.diceGroupBox.TabIndex = 0;
             this.diceGroupBox.TabStop = false;
             // 
+            // gameOverLabel
+            // 
+            this.gameOverLabel.AutoSize = true;
+            this.gameOverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gameOverLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.gameOverLabel.Location = new System.Drawing.Point(411, 161);
+            this.gameOverLabel.Name = "gameOverLabel";
+            this.gameOverLabel.Size = new System.Drawing.Size(236, 20);
+            this.gameOverLabel.TabIndex = 16;
+            this.gameOverLabel.Text = "Game\'s over! How\'d you do?";
+            this.gameOverLabel.Visible = false;
+            // 
             // rollsLeftCounterLabel
             // 
             this.rollsLeftCounterLabel.AutoSize = true;
-            this.rollsLeftCounterLabel.Location = new System.Drawing.Point(620, 166);
+            this.rollsLeftCounterLabel.Location = new System.Drawing.Point(338, 166);
             this.rollsLeftCounterLabel.Name = "rollsLeftCounterLabel";
             this.rollsLeftCounterLabel.Size = new System.Drawing.Size(0, 13);
             this.rollsLeftCounterLabel.TabIndex = 15;
@@ -113,7 +127,7 @@
             // rollsLeftLabel
             // 
             this.rollsLeftLabel.AutoSize = true;
-            this.rollsLeftLabel.Location = new System.Drawing.Point(569, 166);
+            this.rollsLeftLabel.Location = new System.Drawing.Point(287, 166);
             this.rollsLeftLabel.Name = "rollsLeftLabel";
             this.rollsLeftLabel.Size = new System.Drawing.Size(54, 13);
             this.rollsLeftLabel.TabIndex = 14;
@@ -227,6 +241,8 @@
             // 
             // scoreGroupBox
             // 
+            this.scoreGroupBox.Controls.Add(this.highScoreCounterLabel);
+            this.scoreGroupBox.Controls.Add(this.highScoreLabel);
             this.scoreGroupBox.Controls.Add(this.lowerSetButton);
             this.scoreGroupBox.Controls.Add(this.upperSetButton);
             this.scoreGroupBox.Controls.Add(this.gameTotalCounterLabel);
@@ -388,17 +404,23 @@
             this.newGameButton.UseVisualStyleBackColor = true;
             this.newGameButton.Click += new System.EventHandler(this.newGameButton_Click);
             // 
-            // gameOverLabel
+            // highScoreLabel
             // 
-            this.gameOverLabel.AutoSize = true;
-            this.gameOverLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gameOverLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.gameOverLabel.Location = new System.Drawing.Point(290, 165);
-            this.gameOverLabel.Name = "gameOverLabel";
-            this.gameOverLabel.Size = new System.Drawing.Size(236, 20);
-            this.gameOverLabel.TabIndex = 16;
-            this.gameOverLabel.Text = "Game\'s over! How\'d you do?";
-            this.gameOverLabel.Visible = false;
+            this.highScoreLabel.AutoSize = true;
+            this.highScoreLabel.Location = new System.Drawing.Point(560, 171);
+            this.highScoreLabel.Name = "highScoreLabel";
+            this.highScoreLabel.Size = new System.Drawing.Size(63, 13);
+            this.highScoreLabel.TabIndex = 14;
+            this.highScoreLabel.Text = "High Score:";
+            // 
+            // highScoreCounterLabel
+            // 
+            this.highScoreCounterLabel.AutoSize = true;
+            this.highScoreCounterLabel.Location = new System.Drawing.Point(623, 171);
+            this.highScoreCounterLabel.Name = "highScoreCounterLabel";
+            this.highScoreCounterLabel.Size = new System.Drawing.Size(13, 13);
+            this.highScoreCounterLabel.TabIndex = 15;
+            this.highScoreCounterLabel.Text = "0";
             // 
             // Form1
             // 
@@ -456,6 +478,8 @@
         private System.Windows.Forms.Label rollsLeftLabel;
         private System.Windows.Forms.Label upperTotalLabel;
         private System.Windows.Forms.Label gameOverLabel;
+        private System.Windows.Forms.Label highScoreCounterLabel;
+        private System.Windows.Forms.Label highScoreLabel;
     }
 }
 

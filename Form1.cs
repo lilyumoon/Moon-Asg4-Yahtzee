@@ -33,12 +33,15 @@ namespace Moon_Asg4_Yahtzee
             score = new Score();
         }
 
+        /// <summary>
+        /// Handles game logic for starting a new game and updates UI accordingly.
+        /// </summary>
         private void startNewGame()
         {
+            hand.resetRoundsRemaining();
+
             // Reset counters
             resetScore();
-
-            hand.resetRoundsRemaining();
 
             if (gameOverLabel.Visible)
                 gameOverLabel.Visible = false;
@@ -46,13 +49,19 @@ namespace Moon_Asg4_Yahtzee
             startNewRound();
         }
 
+        /// <summary>
+        /// Handles game logic for starting a new round and updates UI accordingly.
+        /// </summary>
         private void startNewRound()
         {
-            // Reset # of rolls left, decrement rounds left, and update counter
             hand.startNewRound();
-            rollsLeftCounterLabel.Text = hand.RollsRemaining.ToString();
+            updateDiceImages();
 
-            resetDice();
+            // Reset 'held' labels
+            foreach (Label label in heldLabels)
+                label.Visible = false;
+
+            rollsLeftCounterLabel.Text = hand.RollsRemaining.ToString();
             rollButton.Enabled = true;
             upperSetButton.Enabled = false;
             lowerSetButton.Enabled = false;
@@ -82,19 +91,6 @@ namespace Moon_Asg4_Yahtzee
                 pauseRoundForScoring();
         }
 
-        private void resetDice()
-        {
-            // Clear displayed dice images
-            for (int i = 0; i < dicePictureBoxes.Length; i++)
-            {
-                dicePictureBoxes[i].Image = null;
-            }
-
-            // Reset 'held' labels
-            foreach (Label label in heldLabels)
-                label.Visible = false;
-        }
-
         private void resetScore()
         {
             // Iterate through each item in the scoring boxes and save
@@ -119,6 +115,9 @@ namespace Moon_Asg4_Yahtzee
             gameTotalCounterLabel.Text = "0";
         }
 
+        /// <summary>
+        /// Updates the images displayed in each die picture box.
+        /// </summary>
         private void updateDiceImages()
         {
             Image[] dieImages = hand.getDieImages();
@@ -128,6 +127,9 @@ namespace Moon_Asg4_Yahtzee
             }
         }
 
+        /// <summary>
+        /// Modifies UI interactability in order to force the player to select a scoring method before continuing.
+        /// </summary>
         private void pauseRoundForScoring()
         {
             rollButton.Enabled = false;
@@ -140,16 +142,30 @@ namespace Moon_Asg4_Yahtzee
 
         }
 
+        /// <summary>
+        /// Event handler for the New Game button's Click event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void newGameButton_Click(object sender, EventArgs e)
         {
             startNewGame();
         }
 
+        /// <summary>
+        /// Event handler for the Roll button's click event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rollButton_Click(object sender, EventArgs e)
         {
             rollDice();
             updateDiceImages();
         }
+
+        /*
+         * Event handlers for the dice picture boxes.
+         */
 
         private void diePictureBox1_Click(object sender, EventArgs e) { toggleHoldState(0); }
 
@@ -162,10 +178,10 @@ namespace Moon_Asg4_Yahtzee
         private void diePictureBox5_Click(object sender, EventArgs e) { toggleHoldState(4); }
 
         /// <summary>
-        /// Toggles the 'held' state of a die, if the first roll has occurred,
+        /// Toggles the 'held' state of a die, if the first roll has occurred
         /// and if there are any rolls remaining in the round.
         /// </summary>
-        /// <param name="dieIndex"></param>
+        /// <param name="dieIndex">The index of the die to toggle</param>
         private void toggleHoldState(int dieIndex)
         {
             int rollsLeft = hand.RollsRemaining;
@@ -175,7 +191,7 @@ namespace Moon_Asg4_Yahtzee
         }
 
         /// <summary>
-        /// Event handler for the Set button connected to the Upper portion of Yahtzee scoring.
+        /// Event handler for the Upper Set button.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -184,23 +200,25 @@ namespace Moon_Asg4_Yahtzee
         {
             int points = 0;
             int[] dieValues = hand.getDieValues();
+            int selectedIndex = upperScoringListBox.SelectedIndex;
 
-            if (0 == upperScoringListBox.SelectedIndex)
+            // Determine the relevant scoring method to use and calculate points earned
+            if (0 == selectedIndex)
                 points = score.scoreOnes(dieValues);
             
-            else if (1 == upperScoringListBox.SelectedIndex)
+            else if (1 == selectedIndex)
                 points = score.scoreTwos(dieValues);
             
-            else if (2 == upperScoringListBox.SelectedIndex)
+            else if (2 == selectedIndex)
                 points = score.scoreThrees(dieValues);
             
-            else if (3 == upperScoringListBox.SelectedIndex)
+            else if (3 == selectedIndex)
                 points = score.scoreFours(dieValues);
             
-            else if (4 == upperScoringListBox.SelectedIndex)
+            else if (4 == selectedIndex)
                 points = score.scoreFives(dieValues);
             
-            else if (5 == upperScoringListBox.SelectedIndex)
+            else if (5 == selectedIndex)
                 points = score.scoreSixes(dieValues);
             
             else 
@@ -209,29 +227,42 @@ namespace Moon_Asg4_Yahtzee
                     upperScoringListBox.SelectedIndex,
                     "SelectedIndex of upperScoringListBox is outside the range of valid values (0-5)");
 
-
+            // Update text in scoring box
             upperScoringListBox.Items[upperScoringListBox.SelectedIndex] += points.ToString();
             int newUpperTotal = int.Parse(upperTotalCounterLabel.Text) + points;
             upperTotalCounterLabel.Text = newUpperTotal.ToString();
 
-            // If any points were earned this round, update totals
+            // If any points were earned this round, update game total points and check for bonus
             if (points > 0)
             {
+                // Update game total
+                increaseGameTotalPoints(points);
+
                 // Check for bonus points
                 checkForBonusPoints();
-
-                // Update game total
-                updateGameTotalPoints(points);
             }
 
+            // If there are any rounds remaining in the game, start a new round.
+            // Otherwise, show the 'game over' indicator.
             if (hand.RoundsRemaining > 0)
                 startNewRound();
             else
-                gameOverLabel.Visible = true;
+                endGame();
+        }
+
+        private void endGame()
+        {
+            gameOverLabel.Visible = true;
+
+            // If this game's score is higher than the highest score, update counter
+            int highScore = int.Parse(highScoreCounterLabel.Text);
+            int gameTotalPoints = int.Parse(gameTotalCounterLabel.Text);
+            if (highScore > gameTotalPoints)
+                highScoreCounterLabel.Text = gameTotalPoints.ToString();
         }
 
         /// <summary>
-        /// Event handler for the Set button connected to the Lower portion of Yahtzee scoring.
+        /// Event handler for the Lower Set button.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -240,26 +271,28 @@ namespace Moon_Asg4_Yahtzee
         {
             int points = 0;
             int[] dieValues = hand.getDieValues();
-            
-            if (0 == lowerScoringListBox.SelectedIndex)
+            int selectedIndex = lowerScoringListBox.SelectedIndex;
+
+            // Determine the relevant scoring method to use and calculate points earned
+            if (0 == selectedIndex)
                 points = score.scoreThreeOfAKind(dieValues);
 
-            else if (1 == lowerScoringListBox.SelectedIndex)
+            else if (1 == selectedIndex)
                 points = score.scoreFourOfAKind(dieValues);
 
-            else if (2 == lowerScoringListBox.SelectedIndex)
+            else if (2 == selectedIndex)
                 points = score.scoreFullHouse(dieValues);
 
-            else if (3 == lowerScoringListBox.SelectedIndex)
+            else if (3 == selectedIndex)
                 points = score.scoreSmallStraight(dieValues);
 
-            else if (4 == lowerScoringListBox.SelectedIndex)
+            else if (4 == selectedIndex)
                 points = score.scoreLargeStraight(dieValues);
 
-            else if (5 == lowerScoringListBox.SelectedIndex)
+            else if (5 == selectedIndex)
                 points = score.scoreYahtzee(dieValues);
 
-            else if (6 == lowerScoringListBox.SelectedIndex)
+            else if (6 == selectedIndex)
                 points = score.scoreChance(dieValues);
 
             else
@@ -268,20 +301,27 @@ namespace Moon_Asg4_Yahtzee
                     lowerScoringListBox.SelectedIndex,
                     "SelectedIndex of lowerScoringListBox is outside the range of valid values (0-6)");
 
+            // Update text in scoring box
             lowerScoringListBox.Items[lowerScoringListBox.SelectedIndex] += points.ToString();
             int newLowerTotal = int.Parse(lowerTotalCounterLabel.Text) + points;
             lowerTotalCounterLabel.Text = newLowerTotal.ToString();
 
-            // If any points were earned this round, update game total
+            // If any points were earned this round, update game total points
             if (points > 0)
-                updateGameTotalPoints(points);
+                increaseGameTotalPoints(points);
 
+            // If there are any rounds remaining in the game, start a new round.
+            // Otherwise, show the 'game over' indicator.
             if (hand.RoundsRemaining > 0)
                 startNewRound();
             else
-                gameOverLabel.Visible = true;
+                endGame();
         }
 
+        /// <summary>
+        /// Checks the upper score to see if the bonus points should be added to the score.
+        /// Adds (one-time only) 35 bonus points to the total game score if so.
+        /// </summary>
         private void checkForBonusPoints()
         {
             // Only check for bonus points if they haven't already been added
@@ -294,12 +334,16 @@ namespace Moon_Asg4_Yahtzee
                     int bonusPoints = 35;
                     bonusCounterLabel.Text = bonusPoints.ToString();
 
-                    updateGameTotalPoints(bonusPoints);
+                    increaseGameTotalPoints(bonusPoints);
                 }
             }
         }
 
-        private void updateGameTotalPoints(int points)
+        /// <summary>
+        /// Adds a specified number of points to game total points and updates the display.
+        /// </summary>
+        /// <param name="points">The number of points to add.</param>
+        private void increaseGameTotalPoints(int points)
         {
             int gameTotalPoints = int.Parse(gameTotalCounterLabel.Text);
             gameTotalPoints += points;
@@ -307,10 +351,17 @@ namespace Moon_Asg4_Yahtzee
             gameTotalCounterLabel.Text = gameTotalPoints.ToString();
         }
 
+        /*
+         * Event handlers for when the upper and lower listbox selected indices change.
+         * 
+         * Both:
+         * Toggles the Enabled state of the related 'Set' button based on whether or not 
+         * the scoring item has been used yet.
+         */
         private void upperScoringListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (-1 != upperScoringListBox.SelectedIndex &&
-                isSelectionAllowed(upperScoringListBox, upperScoringListBox.SelectedIndex))
+                isSelectionAllowed(upperScoringListBox))
             {
                 upperSetButton.Enabled = true;
             }
@@ -321,7 +372,7 @@ namespace Moon_Asg4_Yahtzee
         private void lowerScoringListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (-1 != lowerScoringListBox.SelectedIndex &&
-                isSelectionAllowed(lowerScoringListBox, lowerScoringListBox.SelectedIndex))
+                isSelectionAllowed(lowerScoringListBox))
             {
                 lowerSetButton.Enabled = true;
             }
@@ -329,9 +380,15 @@ namespace Moon_Asg4_Yahtzee
                 lowerSetButton.Enabled = false;
         }
 
-        private bool isSelectionAllowed(ListBox parent, int index)
+        /// <summary>
+        /// Determines whether a selected scoring item can be used.
+        /// </summary>
+        /// <param name="parent">The listBox that the item belongs to (upper or lower)</param>
+        /// <returns>True if scoring item has not yet been used.</returns>
+        private bool isSelectionAllowed(ListBox parent)
         {
             bool isAllowed = false;
+            int index = parent.SelectedIndex;
 
             int splitIndex = parent.Items[index].ToString().IndexOf(':');
             string resetText = parent.Items[index].ToString().Substring(0, splitIndex + 2);
@@ -343,6 +400,5 @@ namespace Moon_Asg4_Yahtzee
 
             return isAllowed;
         }
-
     }
 }

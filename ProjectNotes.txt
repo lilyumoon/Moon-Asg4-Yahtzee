@@ -81,5 +81,7 @@ https://northwoodtech.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=1fc899d7-4
 ======= Feedback Questions =======
 
 	* How much time did you spend on the project?
+		Maybe 8 hours between everything?
 
 	* What was the most difficult part of the project?
+		I think I need to work on "doing one thing at a time" and taking a more structured and systematic approach. I think it would help with efficiency and be a general good practice. I've been thinking about using git branches to essentially "chunk" my development and help with intentionality in feature development.

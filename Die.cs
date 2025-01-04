@@ -24,7 +24,7 @@ namespace Moon_Asg4_Yahtzee
         }
 
         /// <summary>
-        /// Simulates rolling the die. Also updates the die's image.
+        /// Simulates rolling the die, giving it a new value and updated its associated image.
         /// </summary>
         public void rollDie()
         {
@@ -32,8 +32,25 @@ namespace Moon_Asg4_Yahtzee
             int randomNumber = random.Next(1, 7);
             dieValue = randomNumber;
 
+            updateImage();
+        }
+
+        /// <summary>
+        /// Sets the die to an "unused" state, effectively removing the image.
+        /// </summary>
+        public void resetDie()
+        {
+            dieValue = 0; 
+            updateImage();
+        }
+
+        private void updateImage()
+        {
             int dieImageIndex = dieValue - 1;
-            dieImage = dieImages.Images[dieImageIndex];
+            if (dieImageIndex == -1)
+                dieImage = null;
+            else
+                dieImage = dieImages.Images[dieImageIndex];
         }
 
     }
