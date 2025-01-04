@@ -250,6 +250,9 @@ namespace Moon_Asg4_Yahtzee
                 endGame();
         }
 
+        /// <summary>
+        /// Updates UI to reflect the game state of 'game over'
+        /// </summary>
         private void endGame()
         {
             gameOverLabel.Visible = true;

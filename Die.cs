@@ -44,6 +44,9 @@ namespace Moon_Asg4_Yahtzee
             updateImage();
         }
 
+        /// <summary>
+        /// Updates the die's image based on its value. A value of 0 yields a null image.
+        /// </summary>
         private void updateImage()
         {
             int dieImageIndex = dieValue - 1;
