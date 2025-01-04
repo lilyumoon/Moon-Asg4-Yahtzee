@@ -69,6 +69,9 @@ namespace Moon_Asg4_Yahtzee
             lowerScoringListBox.Enabled = false;
         }
 
+        /// <summary>
+        /// Responsible for calling game logic for rolling the dice and updates UI accordingly. If round is over, pauses for scoring.
+        /// </summary>
         private void rollDice()
         {
             // Find which dice should be rolled.

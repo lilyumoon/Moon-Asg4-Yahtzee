@@ -16,77 +16,48 @@ namespace Moon_Asg4_Yahtzee
 
         public int scoreOnes(int[] diceValues)
         {
-            int points = 0;
-
-            foreach (int i in diceValues)
-            {
-                if (1 == i)
-                    points += i;
-            }
-
-            return points;
+            return scoreUpper(diceValues, 1);
         }
 
         public int scoreTwos(int[] diceValues)
         {
-            int points = 0;
-
-            foreach (int i in diceValues)
-            {
-                if (2 == i)
-                    points += i;
-            }
-
-            return points;
+            return scoreUpper(diceValues, 2);
         }
 
         public int scoreThrees(int[] diceValues)
         {
-            int points = 0;
-
-            foreach (int i in diceValues)
-            {
-                if (3 == i)
-                    points += i;
-            }
-
-            return points;
+            return scoreUpper(diceValues, 3);
         }
 
         public int scoreFours(int[] diceValues)
         {
-            int points = 0;
-
-            foreach (int i in diceValues)
-            {
-                if (4 == i)
-                    points += i;
-            }
-
-            return points;
+            return scoreUpper(diceValues, 4);
         }
 
         public int scoreFives(int[] diceValues)
         {
-            int points = 1;
-
-            foreach (int i in diceValues)
-            {
-                if (5 == i)
-                    points += i;
-            }
-
-            return points;
+            return scoreUpper(diceValues, 5);
         }
 
         public int scoreSixes(int[] diceValues)
+        {
+            return scoreUpper(diceValues, 6);
+        }
+
+        /// <summary>
+        /// Iterates through the diceValues, compares each dieValue to value, and increments points by value if match.
+        /// </summary>
+        /// <param name="diceValues">The array of dice to score.</param>
+        /// <param name="value">The value to match the dice to.</param>
+        /// <returns>The number of points scored.</returns>
+        private int scoreUpper(int[] diceValues, int value)
         {
             int points = 0;
 
             foreach (int i in diceValues)
             {
-                if (6 == i)
-                    points += i;
+                if (i == value)
+                    points += value;
             }
 
             return points;
