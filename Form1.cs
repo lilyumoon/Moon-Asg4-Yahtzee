@@ -255,9 +255,9 @@ namespace Moon_Asg4_Yahtzee
             gameOverLabel.Visible = true;
 
             // If this game's score is higher than the highest score, update counter
-            int highScore = int.Parse(highScoreCounterLabel.Text);
             int gameTotalPoints = int.Parse(gameTotalCounterLabel.Text);
-            if (highScore > gameTotalPoints)
+            int highScore = int.Parse(highScoreCounterLabel.Text);
+            if (gameTotalPoints > highScore)
                 highScoreCounterLabel.Text = gameTotalPoints.ToString();
         }
 
